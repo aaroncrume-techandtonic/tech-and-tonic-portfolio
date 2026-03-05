@@ -4,8 +4,8 @@ export const projects = [
     title: "Klamath Language App",
     description: "An interactive learning application dedicated to the history and language of the Klamath, Modoc, and Yahooskin peoples.",
     techStack: ["Next.js", "Tailwind CSS"],
-    link: "https://aaroncrume-techandtonic.github.io/language/",
-    github: "https://github.com/aaroncrume/klamath-app"
+    link: "https://klamath-app-v2-pauw.vercel.app",
+    github: "https://github.com/aaroncrume/klamath-app-v2"
   },
   {
     id: 2,
