@@ -1,7 +1,17 @@
-// src/components/ProjectCard.jsx
 import Link from 'next/link';
 
-export default function ProjectCard({ project }) {
+// 1. Tell TypeScript exactly what a 'Project' looks like
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  techStack: string[];
+  link: string;
+  github: string;
+};
+
+// 2. Apply that type to the incoming prop
+export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow bg-white">
       <h3 className="text-xl font-semibold mb-2 text-gray-900">{project.title}</h3>
