@@ -1,5 +1,6 @@
 // src/app/page.jsx
 import AboutSection from '../components/AboutSection';
+import AdSenseUnit from '../components/AdSenseUnit';
 import Footer from '../components/Footer';
 import ProjectCard from '../components/ProjectCard';
 import { projects } from './data/projects';
@@ -26,6 +27,11 @@ export default function Home() {
           View My Work
         </a>
       </section>
+
+      <section className="max-w-5xl mx-auto px-6 pb-10">
+        <AdSenseUnit adSlot="3350521090" className="min-h-[90px]" />
+      </section>
+
       {/* Insert the new About Section right here */}
       <AboutSection />
 
@@ -40,6 +46,10 @@ export default function Home() {
           ))}
    {/* ... your projects grid ends up here */}
         </div>
+      </section>
+
+      <section className="max-w-5xl mx-auto px-6 pb-10">
+        <AdSenseUnit adSlot="7098194417" className="min-h-[90px]" />
       </section>
       
       <Footer />
