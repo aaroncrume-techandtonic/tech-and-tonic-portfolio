@@ -14,7 +14,7 @@ declare global {
 }
 
 export default function InstagramReelEmbed() {
-  const blockquoteRef = useRef<HTMLElement | null>(null);
+  const blockquoteRef = useRef<HTMLQuoteElement | null>(null);
   const [showFallback, setShowFallback] = useState(false);
 
   useEffect(() => {
