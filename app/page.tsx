@@ -2,6 +2,7 @@
 import AboutSection from '../components/AboutSection';
 import AdSenseUnit from '../components/AdSenseUnit';
 import Footer from '../components/Footer';
+import InstagramReelEmbed from '../components/InstagramReelEmbed';
 import ProjectCard from '../components/ProjectCard';
 import { projects } from './data/projects';
 
@@ -12,7 +13,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="max-w-5xl mx-auto px-6 py-24 md:py-32">
         <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-gray-900">
-          Hi, I'm Aaron.
+          Hi, I&apos;m Aaron.
         </h1>
         <h2 className="text-2xl md:text-3xl text-gray-600 mb-8">
           Founder & Lead Developer at <span className="text-blue-600 font-semibold">Tech & Tonic</span>.
@@ -34,6 +35,8 @@ export default function Home() {
 
       {/* Insert the new About Section right here */}
       <AboutSection />
+
+      <InstagramReelEmbed />
 
       {/* Projects Showcase Section */}
       <section id="projects" className="max-w-5xl mx-auto px-6 py-16">

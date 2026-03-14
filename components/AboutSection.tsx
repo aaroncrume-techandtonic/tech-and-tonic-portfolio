@@ -14,7 +14,7 @@ export default function AboutSection() {
               Before focusing entirely on software and e-commerce, I spent over two decades navigating high-volume, fast-paced environments, including overseeing multi-faceted property operations as a Resident General Manager. 
             </p>
             <p>
-              That background gave me a unique perspective on web development. I don't just look at the code; I look at the operational efficiency, the user experience, and how an application actually serves the business. Whether I am building a custom storefront for Tech & Tonic or an interactive educational tool, my goal is to deliver software that solves real problems without the clutter.
+              That background gave me a unique perspective on web development. I don&apos;t just look at the code; I look at the operational efficiency, the user experience, and how an application actually serves the business. Whether I am building a custom storefront for Tech & Tonic or an interactive educational tool, my goal is to deliver software that solves real problems without the clutter.
             </p>
           </div>
           
