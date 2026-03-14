@@ -44,47 +44,49 @@ export default function InstagramReelEmbed() {
   }, []);
 
   return (
-    <section className="max-w-5xl mx-auto px-6 py-10">
-      <h2 className="text-3xl font-bold mb-6 text-gray-900 border-b pb-4">Latest Reel</h2>
-      <blockquote
-        ref={blockquoteRef}
-        className="instagram-media"
-        data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/reel/DUEPxsrCCL4/?utm_source=ig_embed&amp;utm_campaign=loading"
-        data-instgrm-version="14"
-        style={{
-          background: "#FFF",
-          border: 0,
-          borderRadius: "3px",
-          boxShadow: "0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)",
-          margin: "1px auto",
-          maxWidth: "540px",
-          minWidth: "326px",
-          padding: 0,
-          width: "calc(100% - 2px)",
-        }}
-      >
-        <a
-          href="https://www.instagram.com/reel/DUEPxsrCCL4/?utm_source=ig_embed&amp;utm_campaign=loading"
-          target="_blank"
-          rel="noreferrer"
+    <section className="max-w-5xl mx-auto px-6 py-3">
+      <div className="md:ml-auto w-full max-w-[280px] opacity-90">
+        <p className="mb-2 text-xs uppercase tracking-[0.2em] text-[#7a6b5a]">For fun</p>
+        <blockquote
+          ref={blockquoteRef}
+          className="instagram-media"
+          data-instgrm-captioned
+          data-instgrm-permalink="https://www.instagram.com/reel/DUEPxsrCCL4/?utm_source=ig_embed&amp;utm_campaign=loading"
+          data-instgrm-version="14"
+          style={{
+            background: "#FFF",
+            border: "1px solid #c8c0b2",
+            borderRadius: "2px",
+            boxShadow: "none",
+            margin: "0 0 0 auto",
+            maxWidth: "280px",
+            minWidth: "180px",
+            padding: 0,
+            width: "100%",
+          }}
         >
-          View this post on Instagram
-        </a>
-      </blockquote>
+          <a
+            href="https://www.instagram.com/reel/DUEPxsrCCL4/?utm_source=ig_embed&amp;utm_campaign=loading"
+            target="_blank"
+            rel="noreferrer"
+          >
+            View this post on Instagram
+          </a>
+        </blockquote>
+      </div>
       <Script
         src="https://www.instagram.com/embed.js"
         strategy="lazyOnload"
         onLoad={() => window.instgrm?.Embeds?.process?.()}
       />
       {showFallback && (
-        <p className="mt-4 text-center text-sm text-gray-600">
+        <p className="mt-3 text-right text-xs text-[#5a534b]">
           Embed unavailable in this browser. Watch it on Instagram{" "}
           <a
             href="https://www.instagram.com/reel/DUEPxsrCCL4/?utm_source=ig_embed&amp;utm_campaign=loading"
             target="_blank"
             rel="noreferrer"
-            className="text-blue-600 underline hover:text-blue-700"
+            className="text-[var(--accent)] underline hover:text-[var(--accent-strong)]"
           >
             here
           </a>
