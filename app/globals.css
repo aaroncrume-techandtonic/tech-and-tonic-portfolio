@@ -56,3 +56,40 @@ h3 {
 a {
   transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
 }
+
+.section-shell {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(246, 242, 234, 0.96), rgba(236, 231, 222, 0.92));
+  box-shadow: 0 10px 30px rgba(32, 28, 24, 0.08);
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  flex: 1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--accent);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+}

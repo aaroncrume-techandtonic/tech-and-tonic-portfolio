@@ -5,6 +5,7 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
         
         <div className="text-center md:text-left">
+          <p className="mb-2 text-[11px] uppercase tracking-[0.2em] text-[var(--accent)]">Tech & Tonic</p>
           <h3 className="text-lg font-semibold text-[#201c18]">Tech & Tonic</h3>
           <p className="text-[#4a433b] text-sm mt-1">Built with Next.js and Tailwind CSS.</p>
         </div>

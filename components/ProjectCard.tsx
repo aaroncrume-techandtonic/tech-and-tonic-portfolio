@@ -14,6 +14,7 @@ type Project = {
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="border border-[var(--border)] rounded-sm p-5 bg-[var(--surface)] shadow-[0_8px_20px_rgba(32,28,24,0.06)] hover:shadow-[0_10px_22px_rgba(32,28,24,0.12)] transition-shadow">
+      <p className="mb-2 text-[11px] uppercase tracking-[0.2em] text-[var(--accent)]">Project</p>
       <h3 className="text-xl font-semibold mb-2 text-[#201c18]">{project.title}</h3>
       <p className="text-[#4a433b] mb-4">{project.description}</p>
       
