@@ -2,8 +2,8 @@
 import AboutSection from '../components/AboutSection';
 import AdSenseUnit from '../components/AdSenseUnit';
 import Footer from '../components/Footer';
-import InstagramReelEmbed from '../components/InstagramReelEmbed';
 import ProjectCard from '../components/ProjectCard';
+import SocialShowcase from '../components/SocialShowcase';
 import { projects } from './data/projects';
 
 export default function Home() {
@@ -23,13 +23,13 @@ export default function Home() {
                 Founder & Lead Developer at <span className="text-[var(--accent)] font-semibold">Tech & Tonic</span>.
               </h2>
               <p className="text-base md:text-lg text-[#4a433b] max-w-2xl mb-7">
-                I build clean, high-performance web applications and e-commerce solutions. Welcome to my digital portfolio.
+                I build clean, high-performance web applications and e-commerce solutions with a focus on speed, clarity, and practical business value.
               </p>
               <a
                 href="#projects"
                 className="inline-flex items-center border border-[#7f705f] bg-[#2c251f] px-6 py-2.5 text-sm font-medium uppercase tracking-wide text-[#f5eee4] hover:bg-[#3a3028]"
               >
-                View My Work
+                See Projects
               </a>
             </div>
             <div className="border-l border-[var(--border)] pl-5 text-sm text-[#4a433b] md:min-h-[132px]">
@@ -43,11 +43,6 @@ export default function Home() {
       <section className="max-w-5xl mx-auto px-6 pb-6">
         <AdSenseUnit adSlot="3350521090" className="min-h-[90px]" />
       </section>
-
-      {/* Insert the new About Section right here */}
-      <AboutSection />
-
-      <InstagramReelEmbed />
 
       {/* Projects Showcase Section */}
       <section id="projects" className="max-w-5xl mx-auto px-6 py-10">
@@ -64,6 +59,10 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <SocialShowcase />
+
+      <AboutSection />
 
       <section className="max-w-5xl mx-auto px-6 py-4">
         <AdSenseUnit adSlot="7098194417" className="min-h-[90px]" />
