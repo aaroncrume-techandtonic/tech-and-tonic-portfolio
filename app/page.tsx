@@ -10,6 +10,20 @@ export default function Home() {
   return (
     <main className="min-h-screen text-[#201c18]">
 
+      <section className="max-w-5xl mx-auto px-6 pt-6 pb-2">
+        <iframe
+          data-testid="embed-iframe"
+          style={{ borderRadius: "12px" }}
+          src="https://open.spotify.com/embed/album/3TcPEUdfLsr5Tt1bHnrfqC?utm_source=generator"
+          width="100%"
+          height="352"
+          frameBorder="0"
+          allowFullScreen
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        />
+      </section>
+
       <section className="max-w-5xl mx-auto px-6 pb-6">
         <AdSenseUnit adSlot="3350521090" className="min-h-[90px]" />
       </section>

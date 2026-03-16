@@ -66,28 +66,6 @@ export default function SocialShowcase() {
           );
         })}
       </div>
-
-      <article className="section-shell mt-4 rounded-sm px-5 py-5 md:px-6 md:py-6">
-        <div className="mb-3 flex items-center justify-between gap-3">
-          <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--accent)]">
-            Spotify
-          </p>
-          <span className="text-xs uppercase tracking-[0.18em] text-[#7a6b5a]">
-            Album Pick
-          </span>
-        </div>
-        <iframe
-          data-testid="embed-iframe"
-          style={{ borderRadius: "12px" }}
-          src="https://open.spotify.com/embed/album/3TcPEUdfLsr5Tt1bHnrfqC?utm_source=generator"
-          width="100%"
-          height="352"
-          frameBorder="0"
-          allowFullScreen
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-        />
-      </article>
     </section>
   );
 }
