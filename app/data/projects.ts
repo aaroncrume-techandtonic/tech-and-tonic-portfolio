@@ -20,7 +20,7 @@ export const projects = [
     title: "AI Integration & Automation",
     description: "Dynamic web applications leveraging the Gemini API to process data and generate intelligent, context-aware responses.",
     techStack: ["Next.js", "Gemini API", "Node.js"],
-    link: "https://aaroncrume-techandtonic.github.io/Omni-Cosmos-Horoscope/",
+    link: "https://aaroncrume-techandtonic.github.io/OracleNeumero/",
     github: "https://github.com/aaroncrume/Omni-Cosmos-Horoscope"
   },
   {
