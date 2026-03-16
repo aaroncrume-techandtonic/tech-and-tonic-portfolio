@@ -24,7 +24,7 @@ export default function Home() {
         />
         <iframe
           data-testid="embed-iframe"
-          style={{ borderRadius: "12px", marginTop: "16px" }}
+          style={{ borderRadius: "12px" }}
           src="https://open.spotify.com/embed/show/3ZAlwYu3kQbb2qYhu84X2Y?utm_source=generator"
           width="100%"
           height="352"
