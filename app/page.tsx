@@ -22,6 +22,17 @@ export default function Home() {
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         />
+        <iframe
+          data-testid="embed-iframe"
+          style={{ borderRadius: "12px", marginTop: "16px" }}
+          src="https://open.spotify.com/embed/show/3ZAlwYu3kQbb2qYhu84X2Y?utm_source=generator"
+          width="100%"
+          height="352"
+          frameBorder="0"
+          allowFullScreen
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        />
       </section>
 
       <section className="max-w-5xl mx-auto px-6 pb-6">
