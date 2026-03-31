@@ -4,7 +4,7 @@ export const projects = [
     title: "Klamath Language App",
     description: "An interactive learning app with Klamath and Modoc vocabulary, speech pronunciation, favorites, and quiz practice.",
     techStack: ["TypeScript", "Vite", "GitHub Pages"],
-    link: "https://aaroncrume-techandtonic.github.io/migratebea/",
+    link: "https://aaroncrume-techandtonic.github.io/klamath-app/",
     github: "https://github.com/aaroncrume-techandtonic/migratebea"
   },
   {
