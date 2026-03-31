@@ -1,0 +1,40 @@
+# techandtonic.tech
+
+Landing page project for moving Tech and Tonic content off Beacons and onto a first-party domain.
+
+## What is included
+
+- A branded homepage for techandtonic.tech
+- A featured section for the verified free download, The Hidden Language of Trauma
+- A link hub section that can replace the current Beacons-style button page
+- Static content written in `src/main.ts` and styled in `src/style.css`
+
+## Verified migrated links
+
+- `https://techandtonic.store/`
+- `https://techandtonic.store/shop/583c5bec-b36c-49f4-bc1d-e06eeaf6ce9f?pageViewSource=lib_view`
+- `https://beacons.ai/techandtonic`
+- `https://aaroncrume-techandtonic.github.io/Omni-Cosmos-Horoscope/`
+- `https://aaroncrume-techandtonic.github.io/Modoc-War/`
+- `https://aaroncrume-techandtonic.github.io/indigenous-pages/`
+- `https://aaroncrume-techandtonic.github.io/klamath-watershed/`
+- `https://aaroncrume-techandtonic.github.io/OracleNeumero/`
+- `https://github.com/aaroncrume-techandtonic/TheWebOracle`
+- `https://techandtonic.store/shop/4440aedc-a40d-45f1-824c-4ca4fe42a3b6`
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+## Production build
+
+```bash
+npm run build
+```
+
+## Updating the link hub
+
+Edit the `primaryLinks` array in `src/main.ts` to add or replace active links, and use `linksNeedingConfirmation` for any destinations that still need to be verified.
