@@ -68,6 +68,18 @@ const easyAccessLinks: LinkCard[] = [
     label: 'Companion Tool',
   },
   {
+    title: 'The Basin Beat',
+    detail: 'Listen to the featured show directly on Spotify for long-form audio storytelling and guided listening.',
+    href: 'https://open.spotify.com/show/3ZAlwYu3kQbb2qYhu84X2Y?si=ebaed426c58a4f70',
+    label: 'Listen',
+  },
+  {
+    title: 'Romeo Strikes Back',
+    detail: 'Open the featured album on Spotify when you want a focused music experience connected to this creative work.',
+    href: 'https://open.spotify.com/album/3TcPEUdfLsr5Tt1bHnrfqC?si=EukzfZHBQDa3GKfvqEdMEQ',
+    label: 'Featured Audio',
+  },
+  {
     title: 'Legacy Link Hub',
     detail: 'Use this bridge if you arrived from older routes and want to navigate familiar links in one place.',
     href: 'https://beacons.ai/techandtonic',
@@ -112,6 +124,14 @@ const appDirectoryLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
   {
     title: 'Oracle of the Wheel',
     href: 'https://aaroncrume-techandtonic.github.io/OracleNeumero/',
+  },
+  {
+    title: 'The Basin Beat',
+    href: 'https://open.spotify.com/show/3ZAlwYu3kQbb2qYhu84X2Y?si=ebaed426c58a4f70',
+  },
+  {
+    title: 'Romeo Strikes Back',
+    href: 'https://open.spotify.com/album/3TcPEUdfLsr5Tt1bHnrfqC?si=EukzfZHBQDa3GKfvqEdMEQ',
   },
   {
     title: 'Creators Portfolio',
