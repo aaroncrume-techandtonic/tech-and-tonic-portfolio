@@ -356,6 +356,32 @@ a {
   background: #050510;
 }
 
+.showcase-fallback {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  gap: 0.75rem;
+  padding: 1.2rem;
+  text-align: center;
+  color: #e5e7eb;
+  background: radial-gradient(circle at 30% 20%, rgba(99, 102, 241, 0.28), rgba(2, 6, 23, 0.92));
+}
+
+.showcase-fallback p {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.showcase-fallback a {
+  border-radius: 999px;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(110deg, #0e7490, #4f46e5);
+}
+
 .showcase-actions {
   margin-top: 0.78rem;
   display: flex;

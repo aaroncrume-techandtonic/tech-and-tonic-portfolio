@@ -8,6 +8,7 @@ type LinkCard = {
 }
 
 const contactEmail = 'hello@techandtonic.tech'
+const omniCosmosV3Url = 'https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/'
 
 const app = document.querySelector<HTMLDivElement>('#app')
 
@@ -37,7 +38,7 @@ const featuredPortfolio: LinkCard[] = [
   {
     title: 'OmniCosmos V3.0',
     detail: 'Finish this path with an interactive cosmic reading experience where you can enter your details and receive a personalized interpretation.',
-    href: 'https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/',
+    href: omniCosmosV3Url,
     label: 'Interactive Experience',
   },
 ]
@@ -104,7 +105,7 @@ const showcaseApp = {
   title: 'OmniCosmos V3.0',
   detail:
     'Explore the full Omni Cosmos experience directly from this page, then launch it in a dedicated tab when you want the complete immersive view.',
-  href: 'https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/',
+  href: omniCosmosV3Url,
 }
 
 const appDirectoryLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
@@ -122,7 +123,7 @@ const appDirectoryLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
   },
   {
     title: 'OmniCosmos V3.0',
-    href: 'https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/',
+    href: omniCosmosV3Url,
   },
   {
     title: 'Klamath Language Learning App',
@@ -187,12 +188,17 @@ app.innerHTML = `
       <p class="showcase-copy">${showcaseApp.detail}</p>
       <div class="showcase-frame-wrap">
         <iframe
+          id="omni-showcase-frame"
           class="showcase-frame"
           src="${showcaseApp.href}"
           title="OmniCosmos V3.0 Showcase"
           loading="lazy"
           referrerpolicy="no-referrer"
         ></iframe>
+        <div id="omni-showcase-fallback" class="showcase-fallback" hidden>
+          <p>Preview is unavailable in this browser right now.</p>
+          <a href="${showcaseApp.href}" target="_blank" rel="noreferrer">Open OmniCosmos V3.0 in a new tab</a>
+        </div>
       </div>
       <div class="showcase-actions">
         <a href="${showcaseApp.href}" target="_blank" rel="noreferrer">Launch OmniCosmos V3.0</a>
@@ -296,6 +302,30 @@ app.innerHTML = `
 `
 
 const contactForm = document.querySelector<HTMLFormElement>('#contact-form')
+const showcaseFrame = document.querySelector<HTMLIFrameElement>('#omni-showcase-frame')
+const showcaseFallback = document.querySelector<HTMLDivElement>('#omni-showcase-fallback')
+
+if (showcaseFrame && showcaseFallback) {
+  let frameLoaded = false
+
+  const showFallback = () => {
+    if (frameLoaded) return
+    showcaseFrame.style.display = 'none'
+    showcaseFallback.hidden = false
+  }
+
+  const failTimer = window.setTimeout(showFallback, 9000)
+
+  showcaseFrame.addEventListener('load', () => {
+    frameLoaded = true
+    window.clearTimeout(failTimer)
+  })
+
+  showcaseFrame.addEventListener('error', () => {
+    window.clearTimeout(failTimer)
+    showFallback()
+  })
+}
 
 if (contactForm) {
   contactForm.addEventListener('submit', (event) => {
