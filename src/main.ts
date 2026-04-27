@@ -161,6 +161,10 @@ const appDirectoryLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
     title: 'Creators Portfolio',
     href: 'compound-portfolio.html',
   },
+  {
+    title: 'Beyond GPS — Tracker Infographic',
+    href: 'tracker.html',
+  },
 ]
 
 const allLinks: LinkCard[] = [...featuredPortfolio, ...easyAccessLinks, creatorsPortfolio]
@@ -266,12 +270,37 @@ app.innerHTML = `
 
     <nav class="jump-nav" aria-label="Section navigation">
       <a href="#top">Top</a>
+      <a href="#tracker-showcase">Tracker</a>
       <a href="#featured">Featured</a>
       <a href="#directory">Directory</a>
       <a href="#showcase">Showcase</a>
       <a href="#creator">Creator</a>
       <a href="#contact-section">Contact</a>
     </nav>
+
+    <section class="section section-app-window" id="tracker-showcase" aria-label="Beyond GPS App Showcase">
+      <div class="section-head">
+        <p class="eyebrow">App Showcase</p>
+        <h2>Beyond GPS — How Trackers Find Your Stuff Without Satellites</h2>
+      </div>
+      <p class="showcase-copy">An interactive explainer built right here. Explore how Bluetooth, UWB, and crowdsourced networks power modern item trackers — then open it in a dedicated tab for the full experience.</p>
+      <div class="app-window">
+        <div class="app-window-chrome">
+          <div class="app-window-dots" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <p class="app-window-title">techandtonic.tech/tracker</p>
+          <a href="tracker.html" target="_blank" rel="noreferrer" class="app-window-open" data-track-href="tracker.html">Open ↗</a>
+        </div>
+        <iframe
+          class="app-window-frame"
+          src="tracker.html"
+          title="Beyond GPS — How Trackers Find Your Stuff Without Satellites"
+          loading="lazy"
+          referrerpolicy="same-origin"
+        ></iframe>
+      </div>
+    </section>
 
     <section class="section" id="featured">
       <div class="section-head">

@@ -1018,4 +1018,90 @@ a {
   .showcase-frame {
     min-height: 520px;
   }
+
+  .app-window-frame {
+    min-height: 560px;
+  }
+}
+
+/* ── App Window Chrome ──────────────────────────────────── */
+
+.section-app-window {
+  border: 1px solid rgba(30, 41, 59, 0.55);
+  background: linear-gradient(130deg, rgba(255, 255, 255, 0.85), rgba(241, 245, 249, 0.78));
+}
+
+.app-window {
+  margin-top: 1rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.22);
+  box-shadow: 0 28px 60px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.app-window-chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.9rem;
+  background: #1e293b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.app-window-dots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.app-window-dots span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.app-window-dots span:nth-child(1) { background: #ef4444; }
+.app-window-dots span:nth-child(2) { background: #f59e0b; }
+.app-window-dots span:nth-child(3) { background: #22c55e; }
+
+.app-window-title {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+  font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-window-open {
+  flex-shrink: 0;
+  border-radius: 999px;
+  padding: 0.28rem 0.65rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.06);
+  transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
+  font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+}
+
+.app-window-open:hover {
+  border-color: #60a5fa;
+  color: #93c5fd;
+  background: rgba(96, 165, 250, 0.1);
+}
+
+.app-window-frame {
+  display: block;
+  width: 100%;
+  min-height: 720px;
+  border: 0;
+  background: #020617;
 }
