@@ -1,45 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# techandtonic.tech
 
-## Getting Started
+Landing page project for moving Tech and Tonic content off Beacons and onto a first-party domain.
 
-First, run the development server:
+## What is included
+
+- A branded homepage for techandtonic.tech
+- A featured section for the verified free download, The Hidden Language of Trauma
+- A link hub section that can replace the current Beacons-style button page
+- Static content written in `src/main.ts` and styled in `src/style.css`
+
+## Verified migrated links
+
+- `https://techandtonic.store/`
+- `https://techandtonic.store/shop/583c5bec-b36c-49f4-bc1d-e06eeaf6ce9f?pageViewSource=lib_view`
+- `https://beacons.ai/techandtonic`
+- `https://omni-cosmos-v2-1.vercel.app`
+- `https://aaroncrume-techandtonic.github.io/Modoc-War/`
+- `https://aaroncrume-techandtonic.github.io/indigenous-pages/`
+- `https://aaroncrume-techandtonic.github.io/klamath-watershed/`
+- `https://aaroncrume-techandtonic.github.io/OracleNeumero/`
+- `https://github.com/aaroncrume-techandtonic/TheWebOracle`
+- `https://techandtonic.store/shop/4440aedc-a40d-45f1-824c-4ca4fe42a3b6`
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Production build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment (Vercel)
 
-## Learn More
+This repository is configured for Vercel-first deployment.
 
-To learn more about Next.js, take a look at the following resources:
+1. Import the repository in Vercel.
+2. Keep defaults or set:
+	- Build Command: `npm run build`
+	- Output Directory: `dist`
+3. Connect `techandtonic.tech` and `www.techandtonic.tech` in Vercel Domains.
+4. Push to `main` to trigger production deploys.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`vercel.json` in the repo pins build/output settings so deploy behavior stays consistent.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Updating the link hub
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-## TikTok Live Toggle
-
-You can show a TikTok live badge in the Social section by setting these environment variables in Vercel:
-
-- `NEXT_PUBLIC_TIKTOK_IS_LIVE=true`
-- `NEXT_PUBLIC_TIKTOK_LIVE_URL=https://www.tiktok.com/@krazies/live`
-
-When live mode is off, set `NEXT_PUBLIC_TIKTOK_IS_LIVE=false` (or remove it) and the card returns to normal profile mode.
+Edit the `primaryLinks` array in `src/main.ts` to add or replace active links, and use `linksNeedingConfirmation` for any destinations that still need to be verified.

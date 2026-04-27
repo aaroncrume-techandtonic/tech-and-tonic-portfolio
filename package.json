@@ -1,28 +1,26 @@
 {
-  "name": "tech-and-tonic",
-  "version": "0.1.0",
+  "name": "migratebea",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "autoprefixer": "^10.4.27",
-    "next": "16.1.6",
-    "postcss": "^8.5.8",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "dev": "vite",
+    "sync:vocabulary": "node scripts/sync-vocabulary.mjs",
+    "build": "npm run sync:vocabulary && tsc && vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.6",
-    "tailwindcss": "^4.2.1",
-    "typescript": "^5"
+    "@tailwindcss/vite": "^4.2.4",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "tailwindcss": "^4.2.4",
+    "typescript": "~5.9.3",
+    "vite": "^8.0.1"
+  },
+  "dependencies": {
+    "lucide-react": "^1.11.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
   }
 }
