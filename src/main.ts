@@ -10,6 +10,7 @@ type LinkCard = {
 
 const contactEmail = 'hello@techandtonic.tech'
 const omniCosmosV3Url = 'https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/?v=3.0.4'
+const trackerFeatureUrl = 'https://migratebea.vercel.app/tracker.html'
 const favoritesStorageKey = 'techandtonic.favorites'
 const usageStorageKey = 'techandtonic.usage'
 
@@ -20,6 +21,13 @@ if (!app) {
 }
 
 const featuredPortfolio: LinkCard[] = [
+  {
+    title: 'Beyond GPS — Tracker Infographic',
+    detail: 'Open the live interactive tracker explainer and use it as a featured app experience from this homepage.',
+    href: trackerFeatureUrl,
+    label: 'Featured App',
+    category: 'Tools',
+  },
   {
     title: 'Indigenous Learning Library',
     detail: 'Start here if you want a guided reading space where Indigenous knowledge is organized with care, context, and clear learning pathways.',
@@ -163,7 +171,7 @@ const appDirectoryLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
   },
   {
     title: 'Beyond GPS — Tracker Infographic',
-    href: 'tracker.html',
+    href: trackerFeatureUrl,
   },
 ]
 
@@ -289,12 +297,12 @@ app.innerHTML = `
           <div class="app-window-dots" aria-hidden="true">
             <span></span><span></span><span></span>
           </div>
-          <p class="app-window-title">techandtonic.tech/tracker</p>
-          <a href="tracker.html" target="_blank" rel="noreferrer" class="app-window-open" data-track-href="tracker.html">Open ↗</a>
+          <p class="app-window-title">migratebea.vercel.app/tracker.html</p>
+          <a href="${trackerFeatureUrl}" target="_blank" rel="noreferrer" class="app-window-open" data-track-href="${trackerFeatureUrl}">Open ↗</a>
         </div>
         <iframe
           class="app-window-frame"
-          src="tracker.html"
+          src="${trackerFeatureUrl}"
           title="Beyond GPS — How Trackers Find Your Stuff Without Satellites"
           loading="lazy"
           referrerpolicy="same-origin"
