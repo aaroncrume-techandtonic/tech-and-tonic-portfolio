@@ -46,6 +46,16 @@ body {
   line-height: 1.55;
 }
 
+.spotify-embeds {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.spotify-embeds iframe {
+  border-radius: 12px;
+}
+
 h1,
 h2,
 h3 {
