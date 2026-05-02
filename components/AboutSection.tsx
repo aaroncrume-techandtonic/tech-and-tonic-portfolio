@@ -15,10 +15,13 @@ export default function AboutSection() {
               I am a web developer who builds clean, functional, and high-performing digital solutions. With an A.S. in Computer Information Systems from the College of the Redwoods, my technical foundation is paired with a deep understanding of practical business needs.
             </p>
             <p>
-              Before focusing entirely on software and e-commerce, I spent over two decades navigating high-volume, fast-paced environments, including overseeing multi-faceted property operations as a Resident General Manager. 
+              Before focusing entirely on software and e-commerce, I spent over two decades navigating high-volume, fast-paced environments, including roles as a Bar Lead and Supervisor through 2016. 
             </p>
             <p>
               That background gave me a unique perspective on web development. I don&apos;t just look at the code; I look at the operational efficiency, the user experience, and how an application actually serves the business. Whether I am building a custom storefront for Tech & Tonic or an interactive educational tool, my goal is to deliver software that solves real problems without the clutter.
+            </p>
+            <p>
+              Rooted deeply in the coastal landscapes of Northern California, my professional and personal endeavors are driven by a profound commitment to this region&apos;s future and its past. Much like crafting a perfectly balanced cocktail, sustaining a community requires the right mix of ingredients. Through my work leading digital transformation projects for the local hospitality and tourism sector, I aim to serve up modern, forward-looking technical solutions for rural businesses. Yet, this push for progression is intrinsically balanced by a fierce dedication to preservation. Whether advocating for the conservation of the Klamath River watershed, honoring local history, or helping sustain the unique character of our towns from Crescent City to Smith River, I believe true development builds the future while fiercely protecting the natural environments that make our home irreplaceable. After all, if we don&apos;t preserve the local watershed, what are we going to use to make the ice?
             </p>
             </div>
           

@@ -28,26 +28,28 @@ const profile = {
   phone: '(707) 218-1421',
   email: 'aaroncrume@gmail.com',
   statement:
-    'Hospitality leader and systems-minded builder with 25+ years of experience spanning service leadership, operations, and computer information systems.',
+    'Web developer and hospitality professional with 25+ years of service leadership in Northern California\'s coastal communities, building digital solutions that support local businesses, preserve cultural heritage, and connect our region to the modern economy.',
+  bio:
+    'Rooted deeply in the coastal landscapes of Northern California, my professional and personal endeavors are driven by a profound commitment to this region\'s future and its past. Much like crafting a perfectly balanced cocktail, sustaining a community requires the right mix of ingredients. Through my work leading digital transformation projects for the local hospitality and tourism sector, I aim to serve up modern, forward-looking technical solutions for rural businesses. Yet, this push for progression is intrinsically balanced by a fierce dedication to preservation. Whether advocating for the conservation of the Klamath River watershed, honoring local history, or helping sustain the unique character of our towns from Crescent City to Smith River, I believe true development builds the future while fiercely protecting the natural environments that make our home irreplaceable. After all, if we don\'t preserve the local watershed, what are we going to use to make the ice?',
   highlights: [
-    '25+ years in hospitality, team leadership, and guest operations',
-    '6 years in casino service environments with compliance-first execution',
+    '25+ years in hospitality and service leadership across the Del Norte coast',
+    'Digital transformation lead for local hospitality and tourism businesses',
     'B.S. in Computer Information Systems with network administration focus',
-    'General management experience across restaurant and multi-unit operations',
+    'Advocate for watershed conservation, Indigenous heritage, and rural community development',
   ],
 }
 
 const careerPath: Role[] = [
   {
-    years: '2011 - Present',
-    title: 'Bartender / Service Lead',
+    years: '2011 - 2016',
+    title: 'Bar Lead / Supervisor',
     company: 'The Harbor View Grotto',
     location: 'Crescent City, CA',
-    summary: 'Long-tenure leadership in fine-casual seafood and steak dining with strong guest consistency.',
+    summary: 'Lead bar and service supervisor for a landmark Crescent City seafood and steak destination, anchoring consistent guest experience on the Del Norte coast.',
     bullets: [
-      'Managed service bar coverage for full dining room flow.',
+      'Supervised bar operations and full dining room service flow.',
       'Maintained high standards in sanitation, pace, and inventory stewardship.',
-      'Delivered reliable high-touch service across more than a decade.',
+      'Built long-term relationships with the local community and regional visitors.',
     ],
   },
   {
@@ -152,6 +154,7 @@ app.innerHTML = `
       <p class="kicker">Compound Portfolio</p>
       <h1>${profile.name}</h1>
       <p class="intro">${profile.statement}</p>
+      <p class="bio">${profile.bio}</p>
       <div class="hero-meta">
         <span>${profile.location}</span>
         <a href="mailto:${profile.email}">${profile.email}</a>
