@@ -24,9 +24,6 @@ if (!app) {
 
 const profile = {
   name: 'Aaron Lee Crume',
-  location: 'Crescent City, California',
-  phone: '(707) 218-1421',
-  email: 'aaroncrume@gmail.com',
   statement:
     'Hospitality leader and systems-minded builder with 25+ years of experience spanning service leadership, operations, and computer information systems.',
   highlights: [
@@ -152,11 +149,6 @@ app.innerHTML = `
       <p class="kicker">Compound Portfolio</p>
       <h1>${profile.name}</h1>
       <p class="intro">${profile.statement}</p>
-      <div class="hero-meta">
-        <span>${profile.location}</span>
-        <a href="mailto:${profile.email}">${profile.email}</a>
-        <span>${profile.phone}</span>
-      </div>
       <a class="back-link" href="./">Back to techandtonic.tech</a>
     </header>
 
