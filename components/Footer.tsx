@@ -17,8 +17,8 @@ export default function Footer() {
           <a href="https://www.linkedin.com/in/aaron-crume-b0150a46/" className="text-[#4a433b] hover:text-[var(--accent)] font-medium">
             LinkedIn
           </a>
-          <a href="mailto:aaroncrume@gmail.com" className="text-[#4a433b] hover:text-[var(--accent)] font-medium">
-            Email Me
+          <a href="/sitemap" className="text-[#4a433b] hover:text-[var(--accent)] font-medium">
+            Sitemap
           </a>
         </div>
         
