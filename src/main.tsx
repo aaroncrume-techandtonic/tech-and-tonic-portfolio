@@ -172,10 +172,10 @@ const getCtaText = (item: LinkCard): string => {
   if (title.includes('library') || label.includes('library')) return 'Browse Library';
   if (title.includes('modoc')) return 'Explore Archive';
   if (title.includes('watershed')) return 'Open Story Map';
-  if (title.includes('language')) return 'Practice Language';
   if (title.includes('store') || label.includes('store')) return 'Shop Now';
   if (title.includes('spotlight')) return 'View Spotlight';
   if (title.includes('guide')) return 'Read Guide';
+  if (title.includes('language')) return 'Practice Language';
   if (title.includes('podcast') || title.includes('basin beat')) return 'Listen Now';
   if (title.includes('album') || title.includes('romeo')) return 'Play Album';
   if (title.includes('oracle')) return 'Open Oracle';
