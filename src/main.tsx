@@ -168,15 +168,21 @@ const getCtaText = (item: LinkCard): string => {
   const label = item.label.toLowerCase();
 
   if (title.includes('directory')) return 'Explore Directory';
+  if (title.includes('omni')) return 'Launch Experience';
   if (title.includes('library') || label.includes('library')) return 'Browse Library';
+  if (title.includes('modoc')) return 'Explore Archive';
+  if (title.includes('watershed')) return 'Open Story Map';
+  if (title.includes('language')) return 'Practice Language';
   if (title.includes('store') || label.includes('store')) return 'Shop Now';
+  if (title.includes('spotlight')) return 'View Spotlight';
   if (title.includes('guide')) return 'Read Guide';
   if (title.includes('podcast') || title.includes('basin beat')) return 'Listen Now';
-  if (title.includes('album')) return 'Play Album';
+  if (title.includes('album') || title.includes('romeo')) return 'Play Album';
+  if (title.includes('oracle')) return 'Open Oracle';
   if (title.includes('tracker')) return 'View Infographic';
   if (title.includes('portfolio')) return 'View Portfolio';
   if (title.includes('legacy')) return 'Open Legacy Hub';
-  return 'Explore Link';
+  return 'Open Destination';
 };
 
 function App() {
