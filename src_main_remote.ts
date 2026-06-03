@@ -221,9 +221,9 @@ app.innerHTML = `
 
     <header class="hero" id="top">
       <p class="eyebrow">Tech & Tonic</p>
-      <h1>Clear pathways. Brighter design. Every destination grouped by purpose.</h1>
+      <h1>Clear pathways. Vibrant design. Every destination grouped by purpose.</h1>
       <p class="hero-copy">
-        Start with Om Shanti, then move through learning, commerce, media, and creator resources with fewer clicks and cleaner context.
+        Start with Om Shanti, then flow through learning, commerce, media, and creator resources with fewer clicks and clearer context.
       </p>
       <div class="hero-actions">
         <a href="https://omshantidirectory.vercel.app/" target="_blank" rel="noreferrer">Visit Om Shanti Directory</a>
@@ -253,7 +253,7 @@ app.innerHTML = `
     <section class="section" id="portfolio">
       <div class="section-head">
         <p class="eyebrow">Featured and Learning</p>
-        <h2>Start with flagship experiences and study pathways grouped together.</h2>
+        <h2>Begin with flagship experiences and move into learning paths in one lane.</h2>
       </div>
       <div class="card-grid card-grid-portfolio">
         ${renderCards(featuredPortfolio)}
@@ -263,7 +263,7 @@ app.innerHTML = `
     <section class="section" id="find">
       <div class="section-head">
         <p class="eyebrow">Store, Media, and Tools</p>
-        <h2>Shop, free resources, audio experiences, and support tools now live in one grouped section.</h2>
+        <h2>Shop, free resources, audio, and companion tools now live in one streamlined section.</h2>
       </div>
       <div class="card-grid">
         ${renderCards(easyAccessLinks)}

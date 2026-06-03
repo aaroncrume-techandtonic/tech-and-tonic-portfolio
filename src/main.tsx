@@ -29,8 +29,8 @@ const groupedLinks: LinkGroup[] = [
   {
     id: 'featured',
     eyebrow: 'Featured Destination',
-    heading: 'Start with the flagship experiences',
-    blurb: 'These are the core journeys we want every visitor to see first.',
+    heading: 'Begin with the flagship experiences',
+    blurb: 'Start here for the fastest path into the core Tech and Tonic journeys.',
     links: [
       {
         title: 'Om Shanti Directory',
@@ -49,8 +49,8 @@ const groupedLinks: LinkGroup[] = [
   {
     id: 'learning',
     eyebrow: 'Learning and Culture',
-    heading: 'Study pathways grouped together',
-    blurb: 'Resources focused on history, language, and place-based context.',
+    heading: 'Learning paths in one lane',
+    blurb: 'History, language, and place-based context organized for steady progression.',
     links: [
       {
         title: 'Indigenous Learning Library',
@@ -81,8 +81,8 @@ const groupedLinks: LinkGroup[] = [
   {
     id: 'commerce',
     eyebrow: 'Store and Resources',
-    heading: 'Commerce links with free learning access',
-    blurb: 'Shop, free guides, and spotlight offers in one place.',
+    heading: 'Shop and free resources together',
+    blurb: 'Browse paid offerings and free materials without leaving the same section.',
     links: [
       {
         title: 'Shop Digital Offerings',
@@ -107,8 +107,8 @@ const groupedLinks: LinkGroup[] = [
   {
     id: 'media',
     eyebrow: 'Media and Tools',
-    heading: 'Audio experiences and companion tools',
-    blurb: 'Listen, reflect, and move into companion symbolic tools.',
+    heading: 'Audio, reflection, and utility tools',
+    blurb: 'Move from listening into interactive tools in a single flow.',
     links: [
       {
         title: 'The Basin Beat',
@@ -139,8 +139,8 @@ const groupedLinks: LinkGroup[] = [
   {
     id: 'creator',
     eyebrow: 'Creator and Legacy',
-    heading: 'Context and legacy navigation',
-    blurb: 'Use these links for profile context and older navigation routes.',
+    heading: 'Creator context and legacy routes',
+    blurb: 'Open the full profile or use legacy links when returning from older hubs.',
     links: [
       {
         title: 'Creators Portfolio',
@@ -176,9 +176,9 @@ function App() {
 
         <header className="hero" id="top">
           <p className="eyebrow">Tech and Tonic</p>
-          <h1>Clear pathways. Brighter design. Every destination grouped by purpose.</h1>
+          <h1>Clear pathways. Vibrant design. Every destination grouped by purpose.</h1>
           <p className="hero-copy">
-            Start with Om Shanti, then move through learning, commerce, media, and creator resources with fewer clicks and cleaner context.
+            Start with Om Shanti, then flow through learning, commerce, media, and creator resources with fewer clicks and clearer context.
           </p>
           <div className="hero-actions">
             <a href="https://omshantidirectory.vercel.app/" target="_blank" rel="noopener noreferrer">
