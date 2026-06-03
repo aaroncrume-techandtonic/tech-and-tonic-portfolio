@@ -8,8 +8,31 @@ import SocialShowcase from '../components/SocialShowcase';
 import { projects } from './data/projects';
 
 export default function Home() {
+
   return (
     <main className="min-h-screen text-[#201c18]">
+
+      {/* Om Shanti Directory Feature Section - moved to very top */}
+      <section className="max-w-5xl mx-auto px-6 pt-8 pb-8">
+        <div className="section-shell rounded-2xl p-6 md:p-8 border border-[#0e8a77] bg-gradient-to-br from-[var(--accent)] via-[var(--accent-3)] to-[var(--accent-2)] shadow-[0_8px_32px_rgba(14,138,119,0.10)]">
+          <div className="section-divider mb-3">
+            <p className="eyebrow text-white">Special Feature</p>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-semibold text-white mb-3 drop-shadow">Om Shanti Learning Directory</h2>
+          <p className="text-white/90 max-w-3xl mb-6">
+            Explore a curated directory of spiritual, wellness, and learning resources. Handpicked for the Tech & Tonic community.
+          </p>
+          <a
+            href="https://omshantidirectory.vercel.app/"
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center rounded-full px-7 py-3 text-lg font-bold bg-white text-[var(--accent)] shadow-lg hover:bg-[var(--accent-2)] hover:text-white transition-colors border-2 border-white"
+            style={{ boxShadow: '0 4px 24px rgba(14,138,119,0.18)' }}
+          >
+            Visit Om Shanti Directory &rarr;
+          </a>
+        </div>
+      </section>
 
       <section className="max-w-5xl mx-auto px-6 pt-6 pb-2">
         <iframe

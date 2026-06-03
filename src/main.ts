@@ -247,6 +247,31 @@ const year = new Date().getFullYear()
 app.innerHTML = `
   <div class="site-bg"></div>
   <div class="site-shell">
+    <!-- Om Shanti Directory Button at the very top -->
+    <div style="display: flex; justify-content: center; margin-top: 2.5rem; margin-bottom: 1.5rem;">
+      <a href="https://omshantidirectory.vercel.app/" target="_blank" rel="noopener" 
+         style="
+           display: inline-flex;
+           align-items: center;
+           padding: 1.1rem 2.2rem;
+           border-radius: 999px;
+           font-size: 1.25rem;
+           font-weight: 800;
+           background: linear-gradient(110deg, var(--accent), var(--accent-3), var(--accent-2));
+           color: #fff;
+           box-shadow: 0 6px 32px rgba(14,138,119,0.13);
+           border: 3px solid #fff;
+           letter-spacing: 0.03em;
+           text-shadow: 0 2px 8px rgba(23,32,43,0.10);
+           transition: background 0.2s, color 0.2s;
+         "
+         onmouseover="this.style.background='linear-gradient(110deg, var(--accent-2), var(--accent-3), var(--accent))';this.style.color='#fff'"
+         onmouseout="this.style.background='linear-gradient(110deg, var(--accent), var(--accent-3), var(--accent-2))';this.style.color='#fff'"
+      >
+        <span style="margin-right: 0.7em; font-size: 1.35em;">🕉️</span>
+        <span>Visit Om Shanti Directory</span>
+      </a>
+    </div>
     <header class="hero" id="top">
       <p class="eyebrow">Tech and Tonic</p>
       <h1>One vibrant hub. Every link easy to find. Built for desktop and phone.</h1>
