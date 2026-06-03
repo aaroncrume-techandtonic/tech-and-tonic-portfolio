@@ -6,6 +6,7 @@ type LinkCard = {
   detail: string;
   href: string;
   label: string;
+  cta?: string;
 };
 
 type LinkGroup = {
@@ -158,6 +159,26 @@ const groupedLinks: LinkGroup[] = [
   },
 ];
 
+const getCtaText = (item: LinkCard): string => {
+  if (item.cta) {
+    return item.cta;
+  }
+
+  const title = item.title.toLowerCase();
+  const label = item.label.toLowerCase();
+
+  if (title.includes('directory')) return 'Explore Directory';
+  if (title.includes('library') || label.includes('library')) return 'Browse Library';
+  if (title.includes('store') || label.includes('store')) return 'Shop Now';
+  if (title.includes('guide')) return 'Read Guide';
+  if (title.includes('podcast') || title.includes('basin beat')) return 'Listen Now';
+  if (title.includes('album')) return 'Play Album';
+  if (title.includes('tracker')) return 'View Infographic';
+  if (title.includes('portfolio')) return 'View Portfolio';
+  if (title.includes('legacy')) return 'Open Legacy Hub';
+  return 'Explore Link';
+};
+
 function App() {
   return (
     <>
@@ -210,7 +231,7 @@ function App() {
                   <h3>{item.title}</h3>
                   <p>{item.detail}</p>
                   <a href={item.href} target="_blank" rel="noopener noreferrer">
-                    Open Link
+                    {getCtaText(item)}
                   </a>
                 </article>
               ))}

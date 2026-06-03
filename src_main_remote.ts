@@ -5,6 +5,7 @@ type LinkCard = {
   detail: string
   href: string
   label: string
+  cta?: string
 }
 
 const contactEmail = 'hello@techandtonic.tech'
@@ -166,6 +167,26 @@ const appDirectoryLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
   },
 ]
 
+const getCtaText = (item: LinkCard): string => {
+  if (item.cta) {
+    return item.cta
+  }
+
+  const title = item.title.toLowerCase()
+  const label = item.label.toLowerCase()
+
+  if (title.includes('directory')) return 'Explore Directory'
+  if (title.includes('library') || label.includes('library')) return 'Browse Library'
+  if (title.includes('store') || label.includes('store')) return 'Shop Now'
+  if (title.includes('guide')) return 'Read Guide'
+  if (title.includes('podcast') || title.includes('basin beat')) return 'Listen Now'
+  if (title.includes('album')) return 'Play Album'
+  if (title.includes('tracker')) return 'View Infographic'
+  if (title.includes('portfolio')) return 'View Portfolio'
+  if (title.includes('legacy')) return 'Open Legacy Hub'
+  return 'Explore Link'
+}
+
 const renderCards = (items: LinkCard[]): string => {
   return items
     .map((item) => {
@@ -174,7 +195,7 @@ const renderCards = (items: LinkCard[]): string => {
           <p class="card-label">${item.label}</p>
           <h3>${item.title}</h3>
           <p>${item.detail}</p>
-          <a href="${item.href}" target="_blank" rel="noreferrer">Open Link</a>
+          <a href="${item.href}" target="_blank" rel="noreferrer">${getCtaText(item)}</a>
         </article>
       `
     })
