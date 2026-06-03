@@ -17,6 +17,12 @@ if (!app) {
 
 const featuredPortfolio: LinkCard[] = [
   {
+    title: 'Om Shanti Directory',
+    detail: 'Enter the featured Om Shanti learning experience with guided modules, immersive audio, and progression pathways.',
+    href: 'https://omshantidirectory.vercel.app/',
+    label: 'Featured Experience',
+  },
+  {
     title: 'Indigenous Learning Library',
     detail: 'Start here if you want a guided reading space where Indigenous knowledge is organized with care, context, and clear learning pathways.',
     href: 'https://aaroncrume-techandtonic.github.io/indigenous-pages/',
@@ -47,13 +53,37 @@ const easyAccessLinks: LinkCard[] = [
     title: 'Shop Digital Offerings',
     detail: 'Go directly to the main storefront for current releases, digital tools, and learning-centered products.',
     href: 'https://techandtonic.store/',
-    label: 'Shop',
+    label: 'Storefront',
   },
   {
     title: 'Free Guide: Hidden Language of Trauma',
     detail: 'Open the free guide and companion materials when you want a focused starting point for reflection, study, and insight.',
     href: 'https://techandtonic.store/shop/583c5bec-b36c-49f4-bc1d-e06eeaf6ce9f?pageViewSource=lib_view',
     label: 'Free Resource',
+  },
+  {
+    title: 'Featured Product Spotlight',
+    detail: 'Go straight to one highlighted offer when you prefer a single focused destination instead of browsing first.',
+    href: 'https://techandtonic.store/shop/4440aedc-a40d-45f1-824c-4ca4fe42a3b6',
+    label: 'Spotlight',
+  },
+  {
+    title: 'The Basin Beat',
+    detail: 'Listen to the featured show directly on Spotify for long-form audio storytelling and guided listening.',
+    href: 'https://open.spotify.com/show/3ZAlwYu3kQbb2qYhu84X2Y?si=ebaed426c58a4f70',
+    label: 'Podcast',
+  },
+  {
+    title: 'Romeo Strikes Back',
+    detail: 'Open the featured album on Spotify when you want a focused music experience connected to this creative work.',
+    href: 'https://open.spotify.com/album/3TcPEUdfLsr5Tt1bHnrfqC?si=EukzfZHBQDa3GKfvqEdMEQ',
+    label: 'Album',
+  },
+  {
+    title: 'Beyond GPS Tracker Infographic',
+    detail: 'View the interactive tracker infographic hosted directly on this domain.',
+    href: 'tracker.html',
+    label: 'Infographic',
   },
   {
     title: 'Klamath Language App: Medicine Wheel Edition',
@@ -68,28 +98,10 @@ const easyAccessLinks: LinkCard[] = [
     label: 'Companion Tool',
   },
   {
-    title: 'The Basin Beat',
-    detail: 'Listen to the featured show directly on Spotify for long-form audio storytelling and guided listening.',
-    href: 'https://open.spotify.com/show/3ZAlwYu3kQbb2qYhu84X2Y?si=ebaed426c58a4f70',
-    label: 'Listen',
-  },
-  {
-    title: 'Romeo Strikes Back',
-    detail: 'Open the featured album on Spotify when you want a focused music experience connected to this creative work.',
-    href: 'https://open.spotify.com/album/3TcPEUdfLsr5Tt1bHnrfqC?si=EukzfZHBQDa3GKfvqEdMEQ',
-    label: 'Featured Audio',
-  },
-  {
     title: 'Legacy Link Hub',
     detail: 'Use this bridge if you arrived from older routes and want to navigate familiar links in one place.',
     href: 'https://beacons.ai/techandtonic',
     label: 'Legacy Access',
-  },
-  {
-    title: 'Featured Product Spotlight',
-    detail: 'Go straight to one highlighted offer when you prefer a single focused destination instead of browsing first.',
-    href: 'https://techandtonic.store/shop/4440aedc-a40d-45f1-824c-4ca4fe42a3b6',
-    label: 'Spotlight',
   },
 ]
 
@@ -108,6 +120,10 @@ const showcaseApp = {
 }
 
 const appDirectoryLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
+  {
+    title: 'Om Shanti Directory',
+    href: 'https://omshantidirectory.vercel.app/',
+  },
   {
     title: 'Indigenous Learning Library',
     href: 'https://aaroncrume-techandtonic.github.io/indigenous-pages/',
@@ -131,6 +147,10 @@ const appDirectoryLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
   {
     title: 'Oracle of the Wheel',
     href: 'https://aaroncrume-techandtonic.github.io/OracleNeumero/',
+  },
+  {
+    title: 'Beyond GPS Tracker Infographic',
+    href: 'tracker.html',
   },
   {
     title: 'The Basin Beat',
@@ -201,13 +221,13 @@ app.innerHTML = `
 
     <header class="hero" id="top">
       <p class="eyebrow">Tech & Tonic</p>
-      <h1>Start here, then follow a clear path through story, tools, and next steps.</h1>
+      <h1>Clear pathways. Brighter design. Every destination grouped by purpose.</h1>
       <p class="hero-copy">
-        Begin with featured experiences, move into guided resources, and finish with a direct way to connect when you are ready.
+        Start with Om Shanti, then move through learning, commerce, media, and creator resources with fewer clicks and cleaner context.
       </p>
       <div class="hero-actions">
-        <a href="#portfolio">Enter the Works</a>
-        <a href="#find">Follow the Paths</a>
+        <a href="https://omshantidirectory.vercel.app/" target="_blank" rel="noreferrer">Visit Om Shanti Directory</a>
+        <a href="#portfolio">Browse Grouped Links</a>
       </div>
     </header>
 
@@ -232,8 +252,8 @@ app.innerHTML = `
 
     <section class="section" id="portfolio">
       <div class="section-head">
-        <p class="eyebrow">Featured Works</p>
-        <h2>Start with the core experiences so you can quickly see what this space offers and where you want to go next.</h2>
+        <p class="eyebrow">Featured and Learning</p>
+        <h2>Start with flagship experiences and study pathways grouped together.</h2>
       </div>
       <div class="card-grid card-grid-portfolio">
         ${renderCards(featuredPortfolio)}
@@ -242,8 +262,8 @@ app.innerHTML = `
 
     <section class="section" id="find">
       <div class="section-head">
-        <p class="eyebrow">Guided Paths</p>
-        <h2>After exploring the featured work, use these direct paths to shop, access free resources, and continue your learning journey.</h2>
+        <p class="eyebrow">Store, Media, and Tools</p>
+        <h2>Shop, free resources, audio experiences, and support tools now live in one grouped section.</h2>
       </div>
       <div class="card-grid">
         ${renderCards(easyAccessLinks)}
