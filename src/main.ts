@@ -10,7 +10,8 @@ type LinkCard = {
 
 const contactEmail = 'hello@techandtonic.tech'
 const omniCosmosV3Url = 'https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/?v=3.0.4'
-const trackerFeatureUrl = 'https://migratebea.vercel.app/tracker.html'
+const trackerFeatureUrl = 'tracker.html'
+const omShantiDirectoryUrl = 'https://omshantidirectory.vercel.app/'
 const favoritesStorageKey = 'techandtonic.favorites'
 const usageStorageKey = 'techandtonic.usage'
 
@@ -21,6 +22,13 @@ if (!app) {
 }
 
 const featuredPortfolio: LinkCard[] = [
+  {
+    title: 'Om Shanti Learning Directory',
+    detail: 'Start with the featured Om Shanti learning directory experience and open the full app in one tap.',
+    href: omShantiDirectoryUrl,
+    label: 'Featured Directory',
+    category: 'Learning',
+  },
   {
     title: 'Beyond GPS — Tracker Infographic',
     detail: 'Open the live interactive tracker explainer and use it as a featured app experience from this homepage.',
@@ -133,6 +141,10 @@ const showcaseApp = {
 }
 
 const appDirectoryLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
+  {
+    title: 'Om Shanti Learning Directory',
+    href: omShantiDirectoryUrl,
+  },
   {
     title: 'Indigenous Learning Library',
     href: 'https://aaroncrume-techandtonic.github.io/indigenous-pages/',
