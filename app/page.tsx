@@ -33,6 +33,22 @@ export default function Home() {
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
         />
+        <div className="mt-6 rounded-3xl overflow-hidden border border-[#b7ad9f] bg-[#faf6f0]">
+          <div className="px-5 py-4 bg-[#201c18] text-[#ece7de]">
+            <p className="text-sm uppercase tracking-[0.2em]">YouTube Channel</p>
+            <h3 className="mt-2 text-xl font-semibold">Om Shanti on YouTube</h3>
+          </div>
+          <iframe
+            data-testid="youtube-embed-iframe"
+            title="Om Shanti YouTube Channel"
+            src="https://www.youtube.com/@THE_OMSHANTI"
+            width="100%"
+            height="640"
+            frameBorder="0"
+            allowFullScreen
+            loading="lazy"
+          />
+        </div>
       </section>
 
       <section className="max-w-5xl mx-auto px-6 pb-6">
