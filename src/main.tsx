@@ -18,6 +18,7 @@ type LinkGroup = {
 };
 
 const quickLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
+  { title: 'Faraday Protection for your Electronics', href: 'https://amzn.to/4oLVS6W' },
   { title: 'Om Shanti Directory', href: 'https://omshantidirectory.vercel.app/' },
   { title: 'Featured App', href: 'https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/' },
   { title: 'Learning Library', href: 'https://aaroncrume-techandtonic.github.io/indigenous-pages/' },

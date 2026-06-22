@@ -10,8 +10,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        compoundPortfolio: resolve(__dirname, 'compound-portfolio.html'),
-        tracker: resolve(__dirname, 'tracker.html'),
       },
     },
   },
