@@ -81,6 +81,27 @@ export default function Home() {
         </div>
       </section>
 
+
+      <section class="max-w-5xl mx-auto px-6 pb-8">
+        <div class="section-shell rounded-2xl p-6 md:p-8 border border-[#b7ad9f] bg-[#f7f3ec]">
+          <div class="section-divider mb-3">
+            <p class="eyebrow">Lesson Spotlight</p>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-semibold text-[#201c18] mb-3">Full Faraday Lesson</h2>
+          <p class="text-[#4a433b] max-w-3xl mb-6">
+            Placeholder entry for the Full Faraday lesson, linked directly to the Amazon listing for easy access.
+          </p>
+          <a
+            href="https://amzn.to/4oLVS6W"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-lg px-5 py-3 bg-[#201c18] text-[#ece7de] hover:bg-[#000]"
+          >
+            View Full Faraday Lesson
+          </a>
+        </div>
+      </section>
+
       {/* Projects Showcase Section */}
       <section id="projects" className="max-w-5xl mx-auto px-6 py-10">
         <div className="section-divider mb-3">

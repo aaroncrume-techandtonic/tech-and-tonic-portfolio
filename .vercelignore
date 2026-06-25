@@ -1,0 +1,23 @@
+# Dependencies and local caches
+node_modules
+.npm
+.pnpm-store
+
+# Build artifacts
+dist
+.next
+coverage
+
+# VCS and editor metadata
+.git
+.gitignore
+.vscode
+
+# Logs and environment files
+*.log
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db

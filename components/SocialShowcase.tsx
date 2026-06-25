@@ -34,30 +34,30 @@ export default function SocialShowcase() {
           return (
             <article
               key={profile.id}
-              className="section-shell rounded-sm px-5 py-5 md:px-6 md:py-6"
+              className="section-shell rounded-2xl px-5 py-5 md:px-6 md:py-6"
             >
               <div className="mb-2 flex items-center justify-between gap-3">
                 <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--accent)]">
                   {profile.label}
                 </p>
                 {isLive && (
-                  <span className="inline-flex items-center gap-2 rounded-full border border-[#9e312c] bg-[#3a0e0c] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#ffd7d4]">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-[#8a2f62] bg-[#311038] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-[#ffd4f5]">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#ff6e66] animate-pulse" />
                     Live Now
                   </span>
                 )}
               </div>
-              <h3 className="text-2xl font-semibold text-[#201c18]">{profile.handle}</h3>
-              <p className="mt-3 text-sm text-[#4a433b]">{profile.description}</p>
+              <h3 className="text-2xl font-semibold text-[#ecf7ff]">{profile.handle}</h3>
+              <p className="mt-3 text-sm text-[#bdd6f0]">{profile.description}</p>
               <div className="mt-5 flex items-center justify-between gap-4 border-t border-[var(--border)] pt-4">
-                <span className="text-xs uppercase tracking-[0.18em] text-[#7a6b5a]">
+                <span className="text-xs uppercase tracking-[0.18em] text-[#94bddf]">
                   {isLive ? "Streaming" : "Public profile"}
                 </span>
                 <a
                   href={ctaHref}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center border border-[#7f705f] bg-[#2c251f] px-4 py-2 text-xs font-medium uppercase tracking-wide text-[#f5eee4] hover:bg-[#3a3028]"
+                  className="inline-flex items-center border border-[#3d6a9a] bg-[#0d2248] px-4 py-2 text-xs font-medium uppercase tracking-wide text-[#ddf2ff] hover:bg-[#15315f]"
                 >
                   {ctaLabel}
                 </a>
