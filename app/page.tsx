@@ -108,7 +108,7 @@ export default function Home() {
           <iframe
             data-testid="youtube-embed-iframe"
             title="Om Shanti YouTube Channel"
-            src="https://www.youtube.com/@THE_OMSHANTI"
+            src="https://www.youtube.com/embed?listType=user_uploads&list=THE_OMSHANTI"
             width="100%"
             height="640"
             frameBorder="0"
