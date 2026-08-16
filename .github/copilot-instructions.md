@@ -1,0 +1,18 @@
+- [x] Verify that the copilot-instructions.md file in the .github directory is created.
+- [x] Clarify Project Requirements
+- [x] Scaffold the Project
+- [x] Customize the Project
+- [x] Install Required Extensions
+- [x] Compile the Project
+- [x] Create and Run Task
+- [ ] Launch the Project
+- [x] Ensure Documentation is Complete
+
+- Requirements summary: Build a custom landing page for techandtonic.tech that carries over information from techandtonic.store and can replace the current Beacons-style link hub.
+- Scaffold summary: Created a Vite app in the current workspace root.
+- Customization summary: Replaced the starter content with a branded landing page and a verified set of migration links.
+- Extension summary: No extensions were specified by the Vite setup info, so none were installed.
+- Compile summary: Installed dependencies and completed a successful production build.
+- Task summary: Created and started a VS Code dev task that runs `npm run dev`.
+- Launch summary: Pending user confirmation for debug or launch mode.
+- Documentation summary: README and copilot instructions were updated and the checklist file was cleaned of HTML comments.
