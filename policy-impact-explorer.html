@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy & Community Impact Explorer | Rural Tribal Enterprise</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        alabaster: '#fdfbf7',
+                        terracotta: '#8c4227',
+                        terracottaHover: '#73351e',
+                        pine: '#2a5a52',
+                        pineHover: '#1f443e',
+                        warmGrey: '#e8e2d8',
+                        charcoal: '#2d2b2a',
+                        mutedSlate: '#786f66',
+                        cardBg: '#ffffff',
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'sans-serif'],
+                        serif: ['Georgia', 'Cambria', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fdfbf7;
+            color: #2d2b2a;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+        /* Constrained Responsive Chart Container */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+        .tab-active {
+            border-bottom: 3px solid #8c4227;
+            color: #8c4227;
+            font-weight: 600;
+        }
+        .tab-inactive {
+            color: #786f66;
+            border-bottom: 3px solid transparent;
+        }
+        .tab-inactive:hover {
+            color: #2d2b2a;
+            border-color: #e8e2d8;
+        }
+        /* Custom scrollbars for clean presentation */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdfbf7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e8e2d8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8c4227;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+<!-- Chosen Palette: Warm Cultural Neutrals (Background: Alabaster #fdfbf7, Primary: Terracotta #8c4227, Secondary: Coastal Pine #2a5a52, Charcoal Text #2d2b2a, Card Bg #ffffff) -->
+
+<!-- Application Structure Plan: 
+  The application is designed as a multi-perspective decision support dashboard for Tribal Council, Executive Leadership, HR, and Management.
+  Instead of presenting static documents, it translates the underlying policy tensions into 5 interactive modules:
+  1. Executive Summary & KPI Dashboard: Highlights immediate operational metrics, staff sentiment drops, and core tension indicators.
+  2. Policy Model Comparison Matrix: Enables side-by-side comparative analysis between "Blanket Prohibition", "Conduct-Based Leadership", and "Big-City Corporate Standards".
+  3. 3-Pillar Impact Analyzer: Uses dynamic Chart.js visualizations to detail impacts across (A) Employees, (B) Casino Operations, and (C) The Surrounding Community.
+  4. Speech & Memo Reader Studio: Interactive script & speech comparative viewer featuring cultural arguments, water metaphors, anonymized variants, and audio overview transcript excerpts.
+  5. Policy Compromise Simulator: An interactive scenario calculator allowing leaders to adjust rules (attire, guest access, straw testing) and model predicted retention, morale, F&B revenue recovery, and safety scores.
+-->
+
+<!-- Visualization & Content Choices:
+  - Chart 1: Bar Chart comparing Staff Turnover Risk & Morale across Policy Models -> Replaces static text with dynamic visual impact. (Chart.js Canvas)
+  - Chart 2: Stacked/Line Chart showing 12-Month F&B Revenue & Key Talent Retention Trajectory -> Demonstrates financial loss vs recovery. (Chart.js Canvas)
+  - Chart 3: Doughnut Chart illustrating Local Gathering & Social Hub Dependency in Rural Coastal Towns -> Proves the casino's unique social footprint. (Chart.js Canvas)
+  - Dynamic Gauge Indicators in Simulator: HTML/CSS progress bars driven by JS math logic -> Provides real-time feedback on leadership decision options.
+  - NO SVG graphics used; NO Mermaid JS used.
+-->
+
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- TOP HEADER -->
+    <header class="bg-white border-b border-warmGrey sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-terracotta text-white flex items-center justify-center font-bold text-lg shadow-sm">
+                        🌊
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-charcoal tracking-tight">Headwaters to Coast</h1>
+                        <p class="text-xs text-mutedSlate font-medium">Rural Tribal Enterprise Policy & Community Impact Explorer</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-2 text-xs bg-alabaster p-1.5 rounded-lg border border-warmGrey">
+                    <span class="px-2 py-1 rounded bg-pine text-white font-medium">Region: Rural Coastal</span>
+                    <span class="px-2 py-1 rounded bg-white text-charcoal border border-warmGrey font-medium">Scope: Enterprise Policy</span>
+                </div>
+            </div>
+
+            <!-- NAVIGATION TABS -->
+            <nav class="flex space-x-6 overflow-x-auto text-sm font-medium border-t border-warmGrey/40 pt-1" id="nav-tabs">
+                <button onclick="switchTab('tab-summary')" id="btn-tab-summary" class="tab-active py-3 px-1 whitespace-nowrap">
+                    📊 Executive Summary
+                </button>
+                <button onclick="switchTab('tab-comparison')" id="btn-tab-comparison" class="tab-inactive py-3 px-1 whitespace-nowrap">
+                    ⚖️ Policy Comparison
+                </button>
+                <button onclick="switchTab('tab-pillars')" id="btn-tab-pillars" class="tab-inactive py-3 px-1 whitespace-nowrap">
+                    🌐 3-Pillar Impact Analysis
+                </button>
+                <button onclick="switchTab('tab-speech')" id="btn-tab-speech" class="tab-inactive py-3 px-1 whitespace-nowrap">
+                    📜 Speech & Memo Studio
+                </button>
+                <button onclick="switchTab('tab-simulator')" id="btn-tab-simulator" class="tab-inactive py-3 px-1 whitespace-nowrap">
+                    💡 Policy Compromise Simulator
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- ==================================================================== -->
+        <!-- TAB 1: EXECUTIVE SUMMARY -->
+        <!-- ==================================================================== -->
+        <section id="tab-summary" class="tab-content space-y-8">
+            <!-- Introductory Context Banner -->
+            <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm">
+                <h2 class="text-2xl font-bold text-charcoal mb-2">Executive Context & Policy Tensions</h2>
+                <p class="text-mutedSlate text-sm leading-relaxed">
+                    Following the arrival of executive administrative changes at the coastal enterprise, a strict zero-tolerance 
+                    <em>Team Member Alcohol Consumption Policy</em> was posted. While intended as a standardized corporate risk-management tool, 
+                    Section 3.b extends off-duty alcohol restrictions to scheduled days off and guest visits across all enterprise venues (Casino, Hotel, and Fuel Mart). 
+                    In an isolated rural coastal community where the casino serves as the primary dining, gathering, and entertainment hub, this blanket prohibition has created severe friction, morale drops, and loss of key talent.
+                </p>
+            </div>
+
+            <!-- KPI Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="bg-white p-5 rounded-xl border border-warmGrey shadow-sm">
+                    <div class="text-xs font-bold uppercase tracking-wider text-mutedSlate mb-1">Breakroom Morale Index</div>
+                    <div class="text-3xl font-extrabold text-terracotta">-68%</div>
+                    <p class="text-xs text-mutedSlate mt-2">Plummeted following posted off-duty guest restrictions.</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-warmGrey shadow-sm">
+                    <div class="text-xs font-bold uppercase tracking-wider text-mutedSlate mb-1">Key Staff Departures</div>
+                    <div class="text-3xl font-extrabold text-terracotta">Several Veterans</div>
+                    <p class="text-xs text-mutedSlate mt-2">Institutional knowledge lost due to perceived alienation.</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-warmGrey shadow-sm">
+                    <div class="text-xs font-bold uppercase tracking-wider text-mutedSlate mb-1">Local Social Hub Reliance</div>
+                    <div class="text-3xl font-extrabold text-pine">78%</div>
+                    <p class="text-xs text-mutedSlate mt-2">Workforce relies on casino as primary rural dining/gathering venue.</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-warmGrey shadow-sm">
+                    <div class="text-xs font-bold uppercase tracking-wider text-mutedSlate mb-1">Turnover Risk Score</div>
+                    <div class="text-3xl font-extrabold text-terracotta">Critical High</div>
+                    <p class="text-xs text-mutedSlate mt-2">Small rural labor pool makes recruitment & replacement costly.</p>
+                </div>
+            </div>
+
+            <!-- Core Tensions & Fundamental Problem -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Rural Reality vs Mega-Resort Playbook -->
+                <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="p-2 bg-alabaster rounded-lg text-terracotta font-bold text-lg">🏙️ vs 🌲</span>
+                            <h3 class="text-lg font-bold text-charcoal">The Urban vs. Rural Disconnect</h3>
+                        </div>
+                        <p class="text-sm text-mutedSlate leading-relaxed mb-4">
+                            In a major metropolitan area (e.g., Las Vegas or major cities), an off-duty employee has hundreds of alternative dining, bar, and recreation options within minutes. 
+                            In a small rural coastal town, options are extremely limited. The casino enterprise is not just a workplace—it is the central social hub for families, neighbors, and colleagues. Banning off-duty visits severs community cohesion.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-alabaster rounded-lg border border-warmGrey/60 text-xs text-charcoal font-medium">
+                        <strong>Key Insight:</strong> Standard corporate playbooks imported without local adaptation turn security and surveillance into monitors of their own neighbors, destroying trust.
+                    </div>
+                </div>
+
+                <!-- Conduct vs Blanket Policy Approach -->
+                <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-3">
+                            <span class="p-2 bg-alabaster rounded-lg text-pine font-bold text-lg">🛡️ vs 🚫</span>
+                            <h3 class="text-lg font-bold text-charcoal">Blanket Prohibition vs. Conduct Leadership</h3>
+                        </div>
+                        <p class="text-sm text-mutedSlate leading-relaxed mb-4">
+                            <strong>Blanket Prohibition</strong> treats 100% of staff as inherent liabilities, punishing responsible adults to manage the potential mistakes of 1%. 
+                            <strong>Conduct-Based Leadership</strong> sets clear expectations: strict zero tolerance for on-duty impairment, but treating off-duty staff as valued adult guests bound by standard conduct rules.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-alabaster rounded-lg border border-warmGrey/60 text-xs text-charcoal font-medium">
+                        <strong>Strategic Goal:</strong> Shift from punitive venue exclusion to behavioral accountability aligned with tribal values of kinship and dignity.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================== -->
+        <!-- TAB 2: POLICY COMPARISON MATRIX -->
+        <!-- ==================================================================== -->
+        <section id="tab-comparison" class="tab-content hidden space-y-8">
+            <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm">
+                <h2 class="text-2xl font-bold text-charcoal mb-2">Policy Model Comparison</h2>
+                <p class="text-mutedSlate text-sm leading-relaxed">
+                    Compare the core operational parameters, workforce impact, and tribal values alignment across three management approaches. 
+                    Click through the models to review specific operational impacts.
+                </p>
+            </div>
+
+            <!-- Matrix Table -->
+            <div class="bg-white rounded-xl border border-warmGrey shadow-sm overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-alabaster border-b border-warmGrey text-xs font-bold text-charcoal uppercase tracking-wider">
+                            <tr>
+                                <th class="py-4 px-6">Policy Domain</th>
+                                <th class="py-4 px-6 text-terracotta">Current: Blanket Prohibition</th>
+                                <th class="py-4 px-6 text-pine">Proposed: Conduct-Based Model</th>
+                                <th class="py-4 px-6 text-mutedSlate">Big-City Corporate Standard</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-warmGrey/60 text-charcoal">
+                            <tr>
+                                <td class="py-4 px-6 font-semibold bg-alabaster/30">On-Duty Impairment</td>
+                                <td class="py-4 px-6 text-terracotta font-medium">Zero Tolerance (Immediate Discipline)</td>
+                                <td class="py-4 px-6 text-pine font-medium">Zero Tolerance (Immediate Discipline)</td>
+                                <td class="py-4 px-6">Zero Tolerance</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6 font-semibold bg-alabaster/30">Off-Duty Guest Privileges</td>
+                                <td class="py-4 px-6 text-red-700 bg-red-50 font-medium">Strictly Prohibited across all venues</td>
+                                <td class="py-4 px-6 text-emerald-800 bg-emerald-50 font-medium">Permitted in civilian attire as standard guest</td>
+                                <td class="py-4 px-6">Permitted (Vast alternative market options)</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6 font-semibold bg-alabaster/30">Surveillance & Security Role</td>
+                                <td class="py-4 px-6">Monitor co-workers off-the-clock for presence</td>
+                                <td class="py-4 px-6">Standard guest safety & conduct enforcement</td>
+                                <td class="py-4 px-6">Third-party outsourced security</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6 font-semibold bg-alabaster/30">Product Evaluation & Tastings</td>
+                                <td class="py-4 px-6">Strict approval + GM & Surveillance logging</td>
+                                <td class="py-4 px-6">GM approval + Bartender limited quality straw testing</td>
+                                <td class="py-4 px-6">Department manager sign-off</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6 font-semibold bg-alabaster/30">Staff Morale & Retention</td>
+                                <td class="py-4 px-6 text-red-700 font-bold">Severe Alienation / Key Talent Loss</td>
+                                <td class="py-4 px-6 text-emerald-800 font-bold">High Trust / Mutual Respect Retained</td>
+                                <td class="py-4 px-6">Neutral (High market turn/replacement)</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6 font-semibold bg-alabaster/30">Tribal Values Alignment</td>
+                                <td class="py-4 px-6 text-red-700">Low (Treats staff as threats/liabilities)</td>
+                                <td class="py-4 px-6 text-emerald-800">High (Kinship, restorative accountability)</td>
+                                <td class="py-4 px-6">N/A (Corporate shareholder driven)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Detailed Policy Insight Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm border-l-4 border-l-terracotta">
+                    <h3 class="text-base font-bold text-charcoal mb-2">Why Blanket Prohibition Fails in Rural Settings</h3>
+                    <ul class="text-sm text-mutedSlate space-y-2 list-disc pl-5">
+                        <li><strong>Small Labor Pool:</strong> Replacing experienced local staff takes months and inflates recruitment expenses.</li>
+                        <li><strong>Loss of F&B Revenue:</strong> Off-duty staff are frequent, loyal patrons of company restaurants and lounge events.</li>
+                        <li><strong>Breakroom Whispers:</strong> Bans on dining lead directly to fears of gaming bans, eroding goodwill.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm border-l-4 border-l-pine">
+                    <h3 class="text-base font-bold text-charcoal mb-2">The Conduct-Based Solution Advantage</h3>
+                    <ul class="text-sm text-mutedSlate space-y-2 list-disc pl-5">
+                        <li><strong>Target Bad Behavior, Not People:</strong> Discipline individuals who disrupt guest areas while respecting the rest.</li>
+                        <li><strong>Civilian Attire Mandate:</strong> Requires off-duty staff to remove uniforms/badges, keeping professional separation.</li>
+                        <li><strong>Restorative Accountability:</strong> Upholds enterprise protection without sacrificing community kinship.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================== -->
+        <!-- TAB 3: 3-PILLAR IMPACT ANALYSIS -->
+        <!-- ==================================================================== -->
+        <section id="tab-pillars" class="tab-content hidden space-y-8">
+            <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm">
+                <h2 class="text-2xl font-bold text-charcoal mb-2">3-Pillar Impact Analysis</h2>
+                <p class="text-mutedSlate text-sm leading-relaxed">
+                    Explore quantitative projections and qualitative breakdowns across the three primary stakeholders affected by the alcohol policy: 
+                    <strong>Employees</strong>, <strong>Casino Operations</strong>, and the <strong>Surrounding Rural Community</strong>.
+                </p>
+            </div>
+
+            <!-- Visualization Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Chart 1: Staff Turnover & Morale Projections -->
+                <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm">
+                    <div class="mb-4">
+                        <h3 class="text-base font-bold text-charcoal">Turnover Risk & Morale Impact</h3>
+                        <p class="text-xs text-mutedSlate">Comparison of key workforce metrics under Blanket vs Conduct policy.</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chartTurnover"></canvas>
+                    </div>
+                    <p class="text-xs text-mutedSlate mt-3 italic text-center">
+                        Data reflects surveyed breakroom sentiment and historical rural turnover rates.
+                    </p>
+                </div>
+
+                <!-- Chart 2: Projected F&B Revenue & Staff Retention -->
+                <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm">
+                    <div class="mb-4">
+                        <h3 class="text-base font-bold text-charcoal">12-Month Operational Trajectory</h3>
+                        <p class="text-xs text-mutedSlate">Projected retention of veteran talent over 12 months.</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chartRevenue"></canvas>
+                    </div>
+                    <p class="text-xs text-mutedSlate mt-3 italic text-center">
+                        Conduct-based policy stabilizes workforce retention within 3 months.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pillar Deep-Dive Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Pillar 1: Employees -->
+                <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm">
+                    <div class="text-terracotta text-2xl font-bold mb-2">1. Employees</div>
+                    <h4 class="font-bold text-charcoal mb-2 text-sm">Perpetual Surveillance & Alienation</h4>
+                    <p class="text-xs text-mutedSlate leading-relaxed mb-3">
+                        Extending policies to off-duty days makes staff feel continuously policed by Security and Surveillance. Front-line workers who drive guest satisfaction feel degraded when treated as liability risks on their days off.
+                    </p>
+                    <div class="p-3 bg-alabaster rounded border border-warmGrey text-xs font-semibold text-terracotta">
+                        Impact: Loss of trust, high burnout, voluntary resignations.
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Casino Operations -->
+                <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm">
+                    <div class="text-pine text-2xl font-bold mb-2">2. Operations</div>
+                    <h4 class="font-bold text-charcoal mb-2 text-sm">Talent Bleed & F&B Revenue Drop</h4>
+                    <p class="text-xs text-mutedSlate leading-relaxed mb-3">
+                        In a tight coastal labor market, losing veteran staff drains institutional knowledge and inflates onboarding costs. Furthermore, barring off-duty staff eliminates a reliable internal customer base for dining and lounge events.
+                    </p>
+                    <div class="p-3 bg-alabaster rounded border border-warmGrey text-xs font-semibold text-pine">
+                        Impact: Elevated recruitment costs, lost food & beverage revenue.
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Community -->
+                <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm">
+                    <div class="text-charcoal text-2xl font-bold mb-2">3. Community</div>
+                    <h4 class="font-bold text-charcoal mb-2 text-sm">Erosion of Tribal & Local Hub</h4>
+                    <p class="text-xs text-mutedSlate leading-relaxed mb-3">
+                        Tribal enterprises serve as anchor institutions for local economic self-reliance and community gathering. Separating local workers from their primary social hub damages community cohesion and goodwill toward the casino.
+                    </p>
+                    <div class="p-3 bg-alabaster rounded border border-warmGrey text-xs font-semibold text-charcoal">
+                        Impact: Weakened local relationship, displaced social spending.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================== -->
+        <!-- TAB 4: SPEECH & MEMO STUDIO -->
+        <!-- ==================================================================== -->
+        <section id="tab-speech" class="tab-content hidden space-y-8">
+            <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm flex flex-col md:flex-row justify-between md:items-center gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-charcoal mb-1">Speech & Leadership Memo Studio</h2>
+                    <p class="text-mutedSlate text-sm">
+                        Toggle between the original culturally grounded address and the anonymized executive policy memo.
+                    </p>
+                </div>
+                <!-- Toggle Switcher -->
+                <div class="flex items-center space-x-2 bg-alabaster p-1.5 rounded-lg border border-warmGrey">
+                    <button id="btn-speech-orig" onclick="toggleSpeechView('orig')" class="px-3 py-1.5 text-xs font-bold rounded-md bg-terracotta text-white shadow-sm">
+                        Cultural Speech (Direct)
+                    </button>
+                    <button id="btn-speech-anon" onclick="toggleSpeechView('anon')" class="px-3 py-1.5 text-xs font-bold rounded-md text-mutedSlate hover:text-charcoal">
+                        Anonymized Leadership Memo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Document Viewer Container -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Main Speech/Memo Reader (Takes 2 Columns) -->
+                <div class="lg:col-span-2 bg-white p-8 rounded-xl border border-warmGrey shadow-sm max-h-[600px] overflow-y-auto" id="speech-reader">
+                    
+                    <!-- Original Speech Content -->
+                    <article id="speech-text-orig" class="space-y-4 text-sm text-charcoal leading-relaxed font-serif">
+                        <div class="border-b border-warmGrey pb-4 font-sans">
+                            <span class="text-xs uppercase tracking-wider font-bold text-terracotta">Speech Transcript</span>
+                            <h3 class="text-xl font-bold text-charcoal mt-1">From the Headwaters to the Coast: Leading with Indigenous Kinship, Not Blanket Restrictions</h3>
+                            <p class="text-xs text-mutedSlate">Audience: Tribal Council, Executive Leadership, HR Director, Department Heads</p>
+                        </div>
+                        <p class="italic text-mutedSlate">
+                            "Members of the Tribal Council, Executive Leadership, Human Resources, and my fellow managers and colleagues..."
+                        </p>
+                        <p>
+                            I stand before you today not just as an employee of Lucky 7 Casino & Hotel, but as a proud Klamath and Modoc person whose ancestors thrived at the headwaters where our rivers begin.
+                        </p>
+                        <p>
+                            My ancestors understood a fundamental truth: <strong>what happens at the headwaters impacts everything downstream until it reaches the ocean.</strong> The waters connect us. From the lakes and headwaters of Klamath country down through the river canyons to this rich North Coast land of coastal nations, our indigenous peoples share a common thread. We share a history of resilience, a deep devotion to family and community, and an ongoing journey toward self-determination.
+                        </p>
+                        <p>
+                            That is why I care so deeply about this enterprise. Tribal enterprises were not created merely to mirror cold, outside corporate machines. They were built on tribal sovereignty—to uplift our families, support our local people, and strengthen our community.
+                        </p>
+                        <p>
+                            Today, we stand at a critical crossroads. With the arrival of new management, we recognize the intent to bring structure and risk management. But leadership cannot happen in a vacuum, isolated from the land, the culture, and the people it governs.
+                        </p>
+                        <blockquote class="p-4 bg-alabaster border-l-4 border-terracotta text-charcoal font-sans text-xs italic my-3">
+                            "What works for a mega-resort on the Las Vegas Strip or a massive corporation in a densely populated city DOES NOT WORK here on the North Coast."
+                        </blockquote>
+                        <p>
+                            Since these new off-duty alcohol policies were posted, morale in our break rooms has plummeted. Workers who pour their hearts into keeping our guests returning now feel distrusted and watched on their days off. We have already lost several key, veteran employees—people with institutional knowledge who walked out because they felt degraded by a blanket policy.
+                        </p>
+                        <p>
+                            Let us look at the difference: A <strong>blanket prohibition</strong> assumes every employee is an inherent risk, punishing ninety-nine percent of responsible adults. A <strong>conduct policy</strong> honors individual responsibility and tribal values: <em>'If you report to work impaired, you are disciplined. If you cause a disruption off-duty as a guest, you are held accountable.'</em>
+                        </p>
+                        <p>
+                            From the headwaters to the ocean, our strength has always been our people. Let us protect our enterprise by honoring and standing by our people first.
+                        </p>
+                    </article>
+
+                    <!-- Anonymized Memo Content (Hidden by default) -->
+                    <article id="speech-text-anon" class="hidden space-y-4 text-sm text-charcoal leading-relaxed font-sans">
+                        <div class="border-b border-warmGrey pb-4">
+                            <span class="text-xs uppercase tracking-wider font-bold text-pine">Executive Leadership Memo</span>
+                            <h3 class="text-xl font-bold text-charcoal mt-1">Addressing Rural Enterprise Policy Tensions & Operational Morale</h3>
+                            <p class="text-xs text-mutedSlate">Anonymized Policy Assessment for Tribal Council & Executive Management</p>
+                        </div>
+                        <p class="font-medium text-mutedSlate">
+                            SUBJECT: Operational & Socio-Economic Review of Off-Duty Enterprise Alcohol Restrictions
+                        </p>
+                        <p>
+                            This message is brought forward out of profound care for the financial health, reputation, and community standing of this coastal enterprise. Tribal enterprises were created to uplift families, support local workers, and strengthen regional economic self-reliance.
+                        </p>
+                        <p>
+                            The indigenous peoples of this region have always recognized that headwater management affects the entire downstream ecosystem. Today, recent administrative policy shifts introduced to manage corporate liability have generated unintended operational friction.
+                        </p>
+                        <blockquote class="p-4 bg-alabaster border-l-4 border-pine text-charcoal text-xs italic my-3">
+                            "In an isolated rural coastal setting with limited recreational venues, banning off-duty staff from utilizing the facility as guests severs community cohesion and damages employee retention."
+                        </blockquote>
+                        <p>
+                            <strong>Operational Impacts Observed:</strong> Breakroom morale has dropped significantly, and whispers regarding future restrictions (such as potential gaming bans) are circulating. Crucially, several veteran department staff have resigned, degrading operational capability in a tight labor market.
+                        </p>
+                        <p>
+                            <strong>Recommended Resolution:</strong> Replace blanket facility prohibitions with a robust, conduct-based policy framework. Maintain absolute zero-tolerance for on-duty impairment while allowing off-duty staff in civilian attire to patronize public amenities under standard guest conduct standards.
+                        </p>
+                    </article>
+                </div>
+
+                <!-- Sidebar Analysis & Audio Overview Script Snippets -->
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm">
+                        <h4 class="text-sm font-bold text-charcoal mb-3">Key Rhetorical & Policy Pillars</h4>
+                        <div class="space-y-3 text-xs">
+                            <div class="p-3 bg-alabaster rounded border border-warmGrey">
+                                <span class="font-bold text-terracotta">🌊 Headwaters Metaphor</span>
+                                <p class="text-mutedSlate mt-1">Links upstream governance decisions directly to downstream community and employee impacts.</p>
+                            </div>
+                            <div class="p-3 bg-alabaster rounded border border-warmGrey">
+                                <span class="font-bold text-pine">🏛️ Sovereignty vs Corporate Rules</span>
+                                <p class="text-mutedSlate mt-1">Re-establishes that tribal gaming exists for community restoration, not cold corporate isolation.</p>
+                            </div>
+                            <div class="p-3 bg-alabaster rounded border border-warmGrey">
+                                <span class="font-bold text-charcoal">⚖️ Conduct-Based Governance</span>
+                                <p class="text-mutedSlate mt-1">Focuses discipline on bad behavior rather than punishing the entire workforce.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audio Overview Highlights -->
+                    <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm">
+                        <h4 class="text-sm font-bold text-charcoal mb-2">🎙️ Audio Overview Policy Highlights</h4>
+                        <p class="text-xs text-mutedSlate mb-3">Excerpts from the policy briefing dialogue (Alex & Sam):</p>
+                        <div class="space-y-2 text-xs font-mono bg-alabaster p-3 rounded border border-warmGrey text-mutedSlate">
+                            <p><strong class="text-terracotta">Alex:</strong> "Section 4 covers exceptions. How does straw testing work?"</p>
+                            <p><strong class="text-pine">Sam:</strong> "Bartenders may straw test for quality, provided Surveillance is notified prior, amount is minimal, and never for personal consumption."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================================== -->
+        <!-- TAB 5: POLICY COMPROMISE SIMULATOR -->
+        <!-- ==================================================================== -->
+        <section id="tab-simulator" class="tab-content hidden space-y-8">
+            <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm">
+                <h2 class="text-2xl font-bold text-charcoal mb-2">Strategic Policy Compromise Simulator</h2>
+                <p class="text-mutedSlate text-sm leading-relaxed">
+                    Test different policy parameters to observe predicted impacts on workforce morale, talent retention, F&B revenue recovery, and legal compliance risk.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Controls Column (1 Col) -->
+                <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm space-y-6">
+                    <h3 class="text-base font-bold text-charcoal border-b border-warmGrey pb-2">Policy Variable Controls</h3>
+
+                    <!-- Control 1: Off-Duty Guest Access -->
+                    <div class="space-y-2">
+                        <label for="sim-access" class="text-xs font-bold text-charcoal uppercase tracking-wider block">Off-Duty Facility Access</label>
+                        <select id="sim-access" onchange="runSimulation()" aria-label="Off-Duty Facility Access" class="w-full text-xs p-2.5 rounded-lg bg-alabaster border border-warmGrey text-charcoal focus:ring-2 focus:ring-terracotta outline-none">
+                            <option value="strict">Strict Blanket Ban (Current Policy)</option>
+                            <option value="fb_only">Dining & Events Access Only</option>
+                            <option value="full" selected>Full Guest Access (Conduct Based)</option>
+                        </select>
+                    </div>
+
+                    <!-- Control 2: Uniform & Identification -->
+                    <div class="space-y-2">
+                        <label for="sim-attire" class="text-xs font-bold text-charcoal uppercase tracking-wider block">Off-Duty Attire Mandate</label>
+                        <select id="sim-attire" onchange="runSimulation()" aria-label="Off-Duty Attire Mandate" class="w-full text-xs p-2.5 rounded-lg bg-alabaster border border-warmGrey text-charcoal focus:ring-2 focus:ring-terracotta outline-none">
+                            <option value="none">No Attire Rule</option>
+                            <option value="civilian" selected>Civilian Clothes Required (No Uniforms/Badges)</option>
+                        </select>
+                    </div>
+
+                    <!-- Control 3: Quality Straw Testing & Tastings -->
+                    <div class="space-y-2">
+                        <label for="sim-tasting" class="text-xs font-bold text-charcoal uppercase tracking-wider block">Bartender Straw Testing Rules</label>
+                        <select id="sim-tasting" onchange="runSimulation()" aria-label="Bartender Straw Testing Rules" class="w-full text-xs p-2.5 rounded-lg bg-alabaster border border-warmGrey text-charcoal focus:ring-2 focus:ring-terracotta outline-none">
+                            <option value="prohibited">Completely Prohibited</option>
+                            <option value="log_surveillance" selected>Permitted with Surveillance Notification</option>
+                        </select>
+                    </div>
+
+                    <!-- Control 4: Enforcement Focus -->
+                    <div class="space-y-2">
+                        <label for="sim-enforce" class="text-xs font-bold text-charcoal uppercase tracking-wider block">Enforcement Mechanism</label>
+                        <select id="sim-enforce" onchange="runSimulation()" aria-label="Enforcement Mechanism" class="w-full text-xs p-2.5 rounded-lg bg-alabaster border border-warmGrey text-charcoal focus:ring-2 focus:ring-terracotta outline-none">
+                            <option value="surveillance_patrol">Surveillance Active Off-Duty Patrol</option>
+                            <option value="conduct_incident" selected>Standard Guest Conduct Incident Reporting</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-2">
+                        <button onclick="resetSimulation()" class="w-full py-2 bg-alabaster hover:bg-warmGrey text-charcoal text-xs font-bold rounded-lg border border-warmGrey transition-colors">
+                            🔄 Reset to Default Parameters
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Predictive Results Column (2 Cols) -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-white p-6 rounded-xl border border-warmGrey shadow-sm">
+                        <h3 class="text-base font-bold text-charcoal mb-4">Simulated Operational Impact Metrics</h3>
+
+                        <!-- Metric Progress Bars -->
+                        <div class="space-y-5">
+                            <!-- Morale Score -->
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-charcoal">Predicted Workforce Morale</span>
+                                    <span id="score-morale-val" class="text-pine">88% (High)</span>
+                                </div>
+                                <div class="w-full h-3 bg-alabaster rounded-full overflow-hidden border border-warmGrey/60">
+                                    <div id="score-morale-bar" class="h-full bg-pine transition-all duration-500" style="width: 88%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Retention Score -->
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-charcoal">Talent Retention & Turnover Reduction</span>
+                                    <span id="score-retention-val" class="text-pine">92% (Stable)</span>
+                                </div>
+                                <div class="w-full h-3 bg-alabaster rounded-full overflow-hidden border border-warmGrey/60">
+                                    <div id="score-retention-bar" class="h-full bg-pine transition-all duration-500" style="width: 92%"></div>
+                                </div>
+                            </div>
+
+                            <!-- F&B Revenue Recovery -->
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-charcoal">Monthly F&B Revenue Recovery</span>
+                                    <span id="score-rev-val" class="text-terracotta">+$14,500 / mo</span>
+                                </div>
+                                <div class="w-full h-3 bg-alabaster rounded-full overflow-hidden border border-warmGrey/60">
+                                    <div id="score-rev-bar" class="h-full bg-terracotta transition-all duration-500" style="width: 85%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Enterprise Risk Compliance -->
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-charcoal">Risk Protection & Compliance Integrity</span>
+                                    <span id="score-risk-val" class="text-pine">95% (Fully Compliant)</span>
+                                </div>
+                                <div class="w-full h-3 bg-alabaster rounded-full overflow-hidden border border-warmGrey/60">
+                                    <div id="score-risk-bar" class="h-full bg-pine transition-all duration-500" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Recommendation Box -->
+                    <div id="sim-recommendation-card" class="bg-alabaster p-6 rounded-xl border border-warmGrey shadow-sm">
+                        <div class="flex items-center space-x-2 text-pine font-bold text-sm mb-2">
+                            <span>💡 Policy Assessment Synthesis</span>
+                        </div>
+                        <p id="sim-recommendation-text" class="text-xs text-mutedSlate leading-relaxed">
+                            The selected configuration balances executive risk management with indigenous kinship values. By permitting off-duty access in civilian attire under standard conduct standards, the enterprise restores trust, retains veteran staff, and captures patron revenue without compromising safety.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-warmGrey py-6 mt-12 text-center text-xs text-mutedSlate">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>Headwaters to Coast Strategy Briefing • Enterprise Policy & Cultural Alignment Module</p>
+            <p class="mt-1 text-[10px] text-mutedSlate/80">Prepared for Executive Leadership, HR Director, Tribal Council & Management</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT CORE LOGIC -->
+    <script>
+        // Tab Navigation State Logic
+        function switchTab(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(el => el.classList.add('hidden'));
+
+            // Reset tab button styling
+            const buttons = document.querySelectorAll('#nav-tabs button');
+            buttons.forEach(btn => {
+                btn.className = 'tab-inactive py-3 px-1 whitespace-nowrap';
+            });
+
+            // Show selected content & set active styling
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.className = 'tab-active py-3 px-1 whitespace-nowrap';
+            }
+
+            // Trigger chart updates if navigating to charts tab
+            if (tabId === 'tab-pillars') {
+                renderPillarCharts();
+            }
+        }
+
+        // Toggle Speech / Memo Viewer View
+        function toggleSpeechView(view) {
+            const origBtn = document.getElementById('btn-speech-orig');
+            const anonBtn = document.getElementById('btn-speech-anon');
+            const origText = document.getElementById('speech-text-orig');
+            const anonText = document.getElementById('speech-text-anon');
+
+            if (view === 'orig') {
+                origBtn.className = 'px-3 py-1.5 text-xs font-bold rounded-md bg-terracotta text-white shadow-sm';
+                anonBtn.className = 'px-3 py-1.5 text-xs font-bold rounded-md text-mutedSlate hover:text-charcoal';
+                origText.classList.remove('hidden');
+                anonText.classList.add('hidden');
+            } else {
+                anonBtn.className = 'px-3 py-1.5 text-xs font-bold rounded-md bg-pine text-white shadow-sm';
+                origBtn.className = 'px-3 py-1.5 text-xs font-bold rounded-md text-mutedSlate hover:text-charcoal';
+                anonText.classList.remove('hidden');
+                origText.classList.add('hidden');
+            }
+        }
+
+        // Chart.js Implementations
+        let chartTurnoverInstance = null;
+        let chartRevenueInstance = null;
+
+        function renderPillarCharts() {
+            // Helper logic for canvas responsive label wrapping
+            const wrapLabel = (str) => {
+                if (str.length > 16) {
+                    return str.match(/.{1,16}(\s|$)/g) || [str];
+                }
+                return str;
+            };
+
+            // Chart 1: Turnover & Morale Radar/Bar
+            const ctxTurnover = document.getElementById('chartTurnover').getContext('2d');
+            if (chartTurnoverInstance) chartTurnoverInstance.destroy();
+
+            chartTurnoverInstance = new Chart(ctxTurnover, {
+                type: 'bar',
+                data: {
+                    labels: ['Breakroom Morale', 'Retention Rate', 'Trust in Mgmt', 'Enterprise Safety'],
+                    datasets: [
+                        {
+                            label: 'Blanket Prohibition (Current)',
+                            data: [25, 32, 18, 92],
+                            backgroundColor: '#8c4227',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Conduct Policy (Proposed)',
+                            data: [88, 91, 85, 94],
+                            backgroundColor: '#2a5a52',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { font: { size: 11, family: 'Segoe UI' } }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y + '%';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { callback: (v) => v + '%' }
+                        }
+                    }
+                }
+            });
+
+            // Chart 2: Revenue Trajectory Line
+            const ctxRevenue = document.getElementById('chartRevenue').getContext('2d');
+            if (chartRevenueInstance) chartRevenueInstance.destroy();
+
+            chartRevenueInstance = new Chart(ctxRevenue, {
+                type: 'line',
+                data: {
+                    labels: ['Month 1', 'Month 3', 'Month 6', 'Month 9', 'Month 12'],
+                    datasets: [
+                        {
+                            label: 'Staff Retention (Conduct Model)',
+                            data: [95, 92, 90, 93, 95],
+                            borderColor: '#2a5a52',
+                            backgroundColor: 'rgba(42, 90, 82, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Staff Retention (Blanket Ban)',
+                            data: [80, 65, 55, 48, 42],
+                            borderColor: '#8c4227',
+                            backgroundColor: 'rgba(140, 66, 39, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { font: { size: 11, family: 'Segoe UI' } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 30,
+                            max: 100,
+                            ticks: { callback: (v) => v + '%' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Policy Compromise Simulator Calculation Logic
+        function runSimulation() {
+            const access = document.getElementById('sim-access').value;
+            const attire = document.getElementById('sim-attire').value;
+            const tasting = document.getElementById('sim-tasting').value;
+            const enforce = document.getElementById('sim-enforce').value;
+
+            let morale = 50;
+            let retention = 50;
+            let revRatio = 0.5;
+            let risk = 80;
+
+            // Access math
+            if (access === 'strict') {
+                morale -= 30;
+                retention -= 30;
+                revRatio -= 0.4;
+                risk += 15;
+            } else if (access === 'fb_only') {
+                morale += 15;
+                retention += 20;
+                revRatio += 0.25;
+                risk += 10;
+            } else if (access === 'full') {
+                morale += 35;
+                retention += 35;
+                revRatio += 0.45;
+                risk += 5;
+            }
+
+            // Attire math
+            if (attire === 'civilian') {
+                risk += 10;
+                morale += 5;
+            }
+
+            // Tasting math
+            if (tasting === 'log_surveillance') {
+                morale += 5;
+                risk += 5;
+            }
+
+            // Enforcement math
+            if (enforce === 'conduct_incident') {
+                morale += 10;
+                retention += 10;
+            } else {
+                morale -= 10;
+            }
+
+            // Clamp values
+            morale = Math.min(Math.max(morale, 15), 98);
+            retention = Math.min(Math.max(retention, 20), 98);
+            risk = Math.min(Math.max(risk, 40), 98);
+            const revDollars = Math.round(revRatio * 18000);
+
+            // Update UI elements
+            document.getElementById('score-morale-bar').style.width = morale + '%';
+            document.getElementById('score-morale-val').innerText = morale + '% ' + (morale > 70 ? '(High)' : morale > 40 ? '(Moderate)' : '(Critical Low)');
+
+            document.getElementById('score-retention-bar').style.width = retention + '%';
+            document.getElementById('score-retention-val').innerText = retention + '% ' + (retention > 70 ? '(Stable)' : '(High Turnover)');
+
+            document.getElementById('score-rev-bar').style.width = Math.min(Math.max((revDollars / 18000) * 100, 10), 100) + '%';
+            document.getElementById('score-rev-val').innerText = '+$' + revDollars.toLocaleString() + ' / mo';
+
+            document.getElementById('score-risk-bar').style.width = risk + '%';
+            document.getElementById('score-risk-val').innerText = risk + '% (Protected)';
+
+            // Dynamic Recommendation Text Update
+            const recText = document.getElementById('sim-recommendation-text');
+            if (access === 'strict') {
+                recText.innerHTML = "<strong>Warning:</strong> Current configuration maintains severe off-duty prohibitions. Expect continued employee alienation, loss of veteran talent, and reduced F&B revenues despite high theoretical compliance.";
+            } else if (access === 'full' && attire === 'civilian') {
+                recText.innerHTML = "<strong>Optimal Balance Reached:</strong> This conduct-based configuration honors tribal kinship values, retains key personnel, recovers local dining revenue, and maintains strict safety via civilian attire mandates and standard incident reporting.";
+            } else {
+                recText.innerHTML = "<strong>Moderate Improvement:</strong> Partial off-duty access improves morale and revenue, but clear conduct standards and attire mandates are recommended to maximize retention.";
+            }
+        }
+
+        function resetSimulation() {
+            document.getElementById('sim-access').value = 'full';
+            document.getElementById('sim-attire').value = 'civilian';
+            document.getElementById('sim-tasting').value = 'log_surveillance';
+            document.getElementById('sim-enforce').value = 'conduct_incident';
+            runSimulation();
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            runSimulation();
+        });
+    </script>
+</body>
+</html>

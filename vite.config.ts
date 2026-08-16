@@ -11,6 +11,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         portfolio: resolve(__dirname, 'portfolio.html'),
+        policyImpactExplorer: resolve(__dirname, 'policy-impact-explorer.html'),
       },
     },
   },

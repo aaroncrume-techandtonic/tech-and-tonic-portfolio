@@ -25,6 +25,7 @@ const quickLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
   { title: 'Store', href: 'https://techandtonic.store/' },
   { title: 'Tracker Infographic', href: '/tracker.html' },
   { title: 'Professional Portfolio', href: '/portfolio.html' },
+  { title: 'Policy & Community Impact Explorer', href: '/policy-impact-explorer.html' },
 ];
 
 const groupedLinks: LinkGroup[] = [
@@ -77,6 +78,20 @@ const groupedLinks: LinkGroup[] = [
         detail: 'Practice vocabulary in an interactive medicine wheel learning environment.',
         href: 'https://aaroncrume-techandtonic.github.io/klamath-app-medicine-wheel/',
         label: 'Language',
+      },
+    ],
+  },
+  {
+    id: 'governance',
+    eyebrow: 'Policy and Governance',
+    heading: 'Tribal enterprise policy and community impact',
+    blurb: 'Interactive briefing tools for tribal council, executive leadership, and management.',
+    links: [
+      {
+        title: 'Policy & Community Impact Explorer',
+        detail: 'Interactive dashboard modeling rural tribal enterprise alcohol policy tradeoffs across staff, operations, and community.',
+        href: '/policy-impact-explorer.html',
+        label: 'Policy Dashboard',
       },
     ],
   },
@@ -189,6 +204,7 @@ const getCtaText = (item: LinkCard): string => {
   if (title.includes('tracker')) return 'View Infographic';
   if (title.includes('portfolio')) return 'View Portfolio';
   if (title.includes('legacy')) return 'Open Legacy Hub';
+  if (title.includes('policy')) return 'Open Explorer';
   return 'Open Destination';
 };
 
