@@ -23,7 +23,7 @@ if (!app) {
 }
 
 const profile = {
-  name: 'Aaron Lee Crume',
+  name: 'The Builder / The Operator',
   statement:
     'Hospitality leader and systems-minded builder with 25+ years of experience spanning service leadership, operations, and computer information systems.',
   highlights: [

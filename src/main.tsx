@@ -166,12 +166,6 @@ const groupedLinks: LinkGroup[] = [
         label: 'Profile',
       },
       {
-        title: 'Creators Portfolio (Legacy)',
-        detail: 'Complete creator profile, project constellation, and background context.',
-        href: 'compound-portfolio.html',
-        label: 'Profile',
-      },
-      {
         title: 'Legacy Link Hub',
         detail: 'Bridge for visitors navigating from older link-hub routes.',
         href: 'https://beacons.ai/techandtonic',

@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aaron Crume | Builder & Operator Portfolio</title>
+    <title>The Builder / The Operator | Professional Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Chosen Palette: Warm Desert Sands & Professional Slate -->
     <!-- Application Structure Plan: 
-        The SPA is designed as a "Dual-Persona Dashboard" to reflect Aaron's "Builder/Operator" identity. 
+        The SPA is designed as a "Dual-Persona Dashboard" to reflect this candidate's "Builder/Operator" identity. 
         Instead of a standard chronological resume, it uses a modular layout:
         1. The Intersection: A hero section defining the bridge between Tech and F&B.
         2. Skill Matrix: An interactive Radar Chart to visualize the balance of soft skills (empathy, leadership) and hard skills (Next.js, POS config).
         3. Career Ecosystem: A filterable timeline/list allowing users to toggle between 'Tech-Heavy' and 'Ops-Heavy' roles.
         4. Impact Analysis: A quantitative look at years of experience and core competencies.
-        This structure was chosen to allow hiring managers in both SaaS and Hospitality to quickly find the relevant 'side' of Aaron's experience while understanding the value of the other.
+        This structure was chosen to allow hiring managers in both SaaS and Hospitality to quickly find the relevant 'side' of this candidate's experience while understanding the value of the other.
     -->
     <!-- Visualization & Content Choices: 
         - Skill Balancing (Radar Chart): Used to show multi-disciplinary proficiency. Highlighting 'Hybrid' skills is the goal.
@@ -136,7 +136,7 @@
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 glass-card site-nav px-6 py-4">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <span class="text-xl font-bold tracking-tight text-slate-800">AARON CRUME</span>
+            <span class="text-xl font-bold tracking-tight text-slate-800">THE BUILDER / THE OPERATOR</span>
             <div class="hidden md:flex space-x-8">
                 <a href="#profile" class="nav-link font-medium">The Bridge</a>
                 <a href="#skills" class="nav-link font-medium">Skills</a>
@@ -207,7 +207,7 @@
                 <h2 class="text-3xl font-bold mb-4">Competency Equilibrium</h2>
                 <p class="text-slate-500 max-w-2xl mx-auto">
                     This visualization illustrates the synergy between technical architecture and operational leadership. 
-                    Aaron isn't just one or the other; he is the balance between them.
+                    This isn't just one role or the other; it's the balance between them.
                 </p>
             </div>
             
@@ -292,7 +292,7 @@
         <section id="testimonials" class="py-12 mb-16 border-t border-slate-200 bg-yellow-50 p-6 rounded-lg">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold mb-2">Testimonials</h2>
-                <p class="text-slate-500 max-w-2xl mx-auto">What colleagues and partners say about working with Aaron.</p>
+                <p class="text-slate-500 max-w-2xl mx-auto">What colleagues and partners say about working together.</p>
             </div>
             <div id="testimonial-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- testimonials rendered here -->
@@ -309,7 +309,7 @@
                         <span class="text-2xl">📍</span>
                         <div class="text-left">
                             <p class="text-xs font-bold text-slate-400 uppercase">Location</p>
-                            <p>Crescent City, CA</p>
+                            <p>Pacific Northwest, USA</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
@@ -317,9 +317,9 @@
                         <div class="text-left flex items-center gap-3">
                             <div>
                                 <p class="text-xs font-bold text-slate-400 uppercase">Email</p>
-                                <p id="emailText">aaroncrume@gmail.com</p>
+                                <p id="emailText">Locked</p>
                             </div>
-                            <button class="px-2 py-1 btn-ghost rounded-md" onclick="copyToClipboard('aaroncrume@gmail.com', this)">Copy</button>
+                            <button class="px-2 py-1 btn-ghost rounded-md" onclick="copyContactValue('email', this)">Copy</button>
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
@@ -327,9 +327,9 @@
                         <div class="text-left flex items-center gap-3">
                             <div>
                                 <p class="text-xs font-bold text-slate-400 uppercase">Phone</p>
-                                <p id="phoneText">(707) 218-1421</p>
+                                <p id="phoneText">Locked</p>
                             </div>
-                            <button class="px-2 py-1 btn-ghost rounded-md" onclick="copyToClipboard('(707) 218-1421', this)">Copy</button>
+                            <button class="px-2 py-1 btn-ghost rounded-md" onclick="copyContactValue('phone', this)">Copy</button>
                         </div>
                     </div>
                     <div id="contactLock" class="locked-overlay">
@@ -352,7 +352,7 @@
     </main>
 
     <footer class="py-8 text-center text-slate-400 border-t border-slate-100">
-        <p>&copy; 2025 Aaron Lee Crume | Built with Next-gen principles.</p>
+        <p>&copy; 2025 Tech & Tonic | Built with Next-gen principles.</p>
     </footer>
 
     <!-- Access Code Modal -->
@@ -373,6 +373,16 @@
     <script>
         // --- Access code logic ---
         let pendingTarget = null;
+
+        // Contact details are not stored as plaintext in markup; decoded only after unlock.
+        const CONTACT = {
+            email: 'YWFyb25jcnVtZUBnbWFpbC5jb20=',
+            phone: 'KDcwNykgMjE4LTE0MjE='
+        };
+        function decodeContact(key) {
+            return atob(CONTACT[key]);
+        }
+
         function requireCode(target, e) {
             if (e && e.preventDefault) e.preventDefault();
             const unlocked = localStorage.getItem('tt_unlocked');
@@ -399,12 +409,10 @@
         function submitCode() {
             const val = document.getElementById('accessCode').value.trim();
             const errorEl = document.getElementById('codeError');
-            const hintEl = document.getElementById('codeHint');
             let fails = parseInt(sessionStorage.getItem('tt_code_fails') || '0', 10);
             if (val.toUpperCase() === 'HIRE') {
                 localStorage.setItem('tt_unlocked', 'true');
                 errorEl.classList.add('hidden');
-                hintEl.classList.add('hidden');
                 sessionStorage.removeItem('tt_code_fails');
                 closeModal();
                 if (pendingTarget) revealTarget(pendingTarget);
@@ -412,11 +420,6 @@
                 fails += 1;
                 sessionStorage.setItem('tt_code_fails', String(fails));
                 errorEl.classList.remove('hidden');
-                // after first fail, show gentle hint with explicit code if user requested 'all' tweaks
-                if (fails >= 1) {
-                    hintEl.textContent = 'Hint: the access code is HIRE (case-insensitive).';
-                    hintEl.classList.remove('hidden');
-                }
             }
         }
 
@@ -424,9 +427,21 @@
             if (target === 'contact') {
                 const lock = document.getElementById('contactLock');
                 if (lock) lock.style.display = 'none';
+                const emailEl = document.getElementById('emailText');
+                const phoneEl = document.getElementById('phoneText');
+                if (emailEl) emailEl.textContent = decodeContact('email');
+                if (phoneEl) phoneEl.textContent = decodeContact('phone');
                 const el = document.getElementById('contact');
                 if (el) el.scrollIntoView({behavior:'smooth'});
             }
+        }
+
+        function copyContactValue(key, btn) {
+            if (localStorage.getItem('tt_unlocked') !== 'true') {
+                requireCode('contact');
+                return;
+            }
+            copyToClipboard(decodeContact(key), btn);
         }
 
         function copyToClipboard(txt, btn) {
@@ -448,8 +463,7 @@
         // Check on load
         document.addEventListener('DOMContentLoaded', () => {
             if (localStorage.getItem('tt_unlocked') === 'true') {
-                const lock = document.getElementById('contactLock');
-                if (lock) lock.style.display = 'none';
+                revealTarget('contact');
             }
             // wire Enter key on modal input
             const ac = document.getElementById('accessCode');
@@ -545,7 +559,7 @@
         ];
 
         const testimonials = [
-            { name: 'Jordan S.', role: 'Director, Hospitality', quote: 'Aaron transformed our operations with pragmatic tech and calm leadership.' },
+            { name: 'Jordan S.', role: 'Director, Hospitality', quote: 'He transformed our operations with pragmatic tech and calm leadership.' },
             { name: 'Maya R.', role: 'Head of Product', quote: 'Delivered production-quality e-commerce features with speed and clear documentation.' }
         ];
 
