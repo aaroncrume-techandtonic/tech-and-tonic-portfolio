@@ -20,8 +20,8 @@ type LinkGroup = {
 const quickLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
   { title: 'Faraday Protection for your Electronics', href: 'https://amzn.to/4oLVS6W' },
   { title: 'Om Shanti Directory', href: 'https://omshantidirectory.vercel.app/' },
-  { title: 'Featured App', href: 'https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/' },
-  { title: 'Learning Library', href: 'https://aaroncrume-techandtonic.github.io/indigenous-pages/' },
+  { title: 'Featured App', href: '/go/omnicosmos' },
+  { title: 'Learning Library', href: '/go/library' },
   { title: 'Store', href: 'https://techandtonic.store/' },
   { title: 'Tracker Infographic', href: '/tracker.html' },
   { title: 'Professional Portfolio', href: '/portfolio.html' },
@@ -44,7 +44,7 @@ const groupedLinks: LinkGroup[] = [
       {
         title: 'OmniCosmos V3.0',
         detail: 'Interactive cosmic experience for reflective prompts and personalized exploration.',
-        href: 'https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/',
+        href: '/go/omnicosmos',
         label: 'Showcase App',
       },
     ],
@@ -58,25 +58,25 @@ const groupedLinks: LinkGroup[] = [
       {
         title: 'Indigenous Learning Library',
         detail: 'Guided reading and resources organized with cultural context and clear progression.',
-        href: 'https://aaroncrume-techandtonic.github.io/indigenous-pages/',
+        href: '/go/library',
         label: 'Library',
       },
       {
         title: 'Modoc History Archive',
         detail: 'Historical archive connecting timelines, places, and primary source context.',
-        href: 'https://aaroncrume-techandtonic.github.io/Modoc-War/',
+        href: '/go/modoc',
         label: 'History',
       },
       {
         title: 'Klamath Watershed Story Map',
         detail: 'Interactive map connecting ecosystems, relationships, and regional narratives.',
-        href: 'https://aaroncrume-techandtonic.github.io/klamath-watershed/',
+        href: '/go/watershed',
         label: 'Story Map',
       },
       {
         title: 'Klamath Language App',
         detail: 'Practice vocabulary in an interactive medicine wheel learning environment.',
-        href: 'https://aaroncrume-techandtonic.github.io/klamath-app-medicine-wheel/',
+        href: '/go/language',
         label: 'Language',
       },
     ],
@@ -142,7 +142,7 @@ const groupedLinks: LinkGroup[] = [
       {
         title: 'Oracle of the Wheel',
         detail: 'Numerology-based companion path for symbolic reflection.',
-        href: 'https://aaroncrume-techandtonic.github.io/OracleNeumero/',
+        href: '/go/oracle',
         label: 'Companion Tool',
       },
       {

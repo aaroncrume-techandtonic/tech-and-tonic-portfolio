@@ -11,5 +11,37 @@
       "source": "/tracker/",
       "destination": "/tracker.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/go/omnicosmos",
+      "destination": "https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/",
+      "permanent": false
+    },
+    {
+      "source": "/go/library",
+      "destination": "https://aaroncrume-techandtonic.github.io/indigenous-pages/",
+      "permanent": false
+    },
+    {
+      "source": "/go/modoc",
+      "destination": "https://aaroncrume-techandtonic.github.io/Modoc-War/",
+      "permanent": false
+    },
+    {
+      "source": "/go/watershed",
+      "destination": "https://aaroncrume-techandtonic.github.io/klamath-watershed/",
+      "permanent": false
+    },
+    {
+      "source": "/go/language",
+      "destination": "https://aaroncrume-techandtonic.github.io/klamath-app-medicine-wheel/",
+      "permanent": false
+    },
+    {
+      "source": "/go/oracle",
+      "destination": "https://aaroncrume-techandtonic.github.io/OracleNeumero/",
+      "permanent": false
+    }
   ]
 }
