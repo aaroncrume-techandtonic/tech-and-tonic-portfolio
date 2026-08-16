@@ -51,6 +51,12 @@ const featuredPortfolio: LinkCard[] = [
 
 const easyAccessLinks: LinkCard[] = [
   {
+    title: 'Empire Agency Manager Access',
+    detail: 'Open the creator portfolio and protected agency access page when you want a direct path to the collaboration deck and agency-facing materials.',
+    href: 'https://creator-portfolio-indol.vercel.app/',
+    label: 'Agency Access',
+  },
+  {
     title: 'Shop Digital Offerings',
     detail: 'Go directly to the main storefront for current releases, digital tools, and learning-centered products.',
     href: 'https://techandtonic.store/',
@@ -122,6 +128,10 @@ const showcaseApp = {
 
 const appDirectoryLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
   {
+    title: 'Empire Agency Manager Access',
+    href: 'https://creator-portfolio-indol.vercel.app/',
+  },
+  {
     title: 'Om Shanti Directory',
     href: 'https://omshantidirectory.vercel.app/',
   },
@@ -181,6 +191,7 @@ const getCtaText = (item: LinkCard): string => {
   if (title.includes('modoc')) return 'Explore Archive'
   if (title.includes('watershed')) return 'Open Story Map'
   if (title.includes('store') || label.includes('store')) return 'Shop Now'
+  if (title.includes('agency')) return 'Open Access'
   if (title.includes('spotlight')) return 'View Spotlight'
   if (title.includes('guide')) return 'Read Guide'
   if (title.includes('language')) return 'Practice Language'
@@ -253,6 +264,7 @@ app.innerHTML = `
         Start with Om Shanti, then flow through learning, commerce, media, and creator resources with fewer clicks and clearer context.
       </p>
       <div class="hero-actions">
+        <a href="https://creator-portfolio-indol.vercel.app/" target="_blank" rel="noreferrer">Empire Agency Manager Access</a>
         <a href="https://omshantidirectory.vercel.app/" target="_blank" rel="noreferrer">Visit Om Shanti Directory</a>
         <a href="#portfolio">Browse Grouped Links</a>
       </div>
@@ -337,6 +349,7 @@ app.innerHTML = `
 
     <footer class="footer" id="contact">
       <p>Tech and Tonic • ${year}</p>
+      <a href="https://creator-portfolio-indol.vercel.app/" target="_blank" rel="noreferrer">Empire Agency Manager Access</a>
       <a href="https://techandtonic.store/" target="_blank" rel="noreferrer">Visit Store</a>
     </footer>
   </div>
