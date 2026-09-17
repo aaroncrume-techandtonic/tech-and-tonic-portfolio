@@ -1,5 +1,5 @@
 ---
-name: techandtonic-website-editor
+name: tonic
 description: 'Make content edits to the techandtonic.tech site (repo tech-and-tonic-portfolio): homepage link hub, portfolio page, policy impact explorer, tracker infographic. Use when asked to edit text/copy/links on techandtonic.tech, update the link hub, change the portfolio or policy-impact-explorer page, update the tracker infographic, preview the site locally, or deploy techandtonic.tech.'
 ---
 
