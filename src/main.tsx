@@ -140,21 +140,15 @@ const groupedLinks: LinkGroup[] = [
   },
   {
     id: 'creator',
-    eyebrow: 'Creator and Legacy',
-    heading: 'Creator context and legacy routes',
-    blurb: 'Open the full profile or use legacy links when returning from older hubs.',
+    eyebrow: 'Creator',
+    heading: 'Creator profile',
+    blurb: 'Open the full profile for background, case studies, and testimonials.',
     links: [
       {
         title: 'Professional Portfolio',
         detail: '20+ years bridging hospitality operations and full-stack development, with case studies and testimonials.',
         href: '/portfolio.html',
         label: 'Profile',
-      },
-      {
-        title: 'Legacy Link Hub',
-        detail: 'Bridge for visitors navigating from older link-hub routes.',
-        href: 'https://beacons.ai/techandtonic',
-        label: 'Legacy',
       },
     ],
   },
@@ -182,10 +176,13 @@ const getCtaText = (item: LinkCard): string => {
   if (title.includes('oracle')) return 'Open Oracle';
   if (title.includes('tracker')) return 'View Infographic';
   if (title.includes('portfolio')) return 'View Portfolio';
-  if (title.includes('legacy')) return 'Open Legacy Hub';
   if (title.includes('policy')) return 'Open Explorer';
   return 'Open Destination';
 };
+
+const omShantiFeature = groupedLinks
+  .find((group) => group.id === 'featured')
+  ?.links.find((item) => item.title === 'Om Shanti Directory');
 
 function App() {
   return (
@@ -205,17 +202,34 @@ function App() {
 
         <header className="hero" id="top">
           <p className="eyebrow">Tech and Tonic</p>
-          <h1>Clear pathways. Vibrant design. Every destination grouped by purpose.</h1>
-          <p className="hero-copy">
-            Start with Om Shanti, then flow through learning, commerce, media, and creator resources with fewer clicks and clearer context.
-          </p>
-          <div className="hero-actions">
-            <a href="https://omshantidirectory.vercel.app/" target="_blank" rel="noopener noreferrer">
-              Visit Om Shanti Directory
-            </a>
-            <a href="#featured">Browse Grouped Links</a>
-          </div>
+          <h1>One directory to begin every journey.</h1>
         </header>
+
+        {omShantiFeature && (
+          <section className="spotlight" aria-labelledby="spotlight-heading">
+            <div className="spotlight-motif" aria-hidden="true">
+              <div className="medicine-wheel">
+                <div className="seg red" />
+                <div className="seg yellow" />
+                <div className="seg black" />
+                <div className="seg white" />
+              </div>
+            </div>
+            <div className="spotlight-content">
+              <p className="spotlight-eyebrow">{omShantiFeature.label}</p>
+              <h2 id="spotlight-heading">{omShantiFeature.title}</h2>
+              <p className="spotlight-detail">{omShantiFeature.detail}</p>
+              <a
+                className="spotlight-cta"
+                href={omShantiFeature.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Enter the Directory &rarr;
+              </a>
+            </div>
+          </section>
+        )}
 
         <nav className="jump-nav" aria-label="Section navigation">
           {groupedLinks.map((group) => (
@@ -225,27 +239,34 @@ function App() {
           ))}
         </nav>
 
-        {groupedLinks.map((group) => (
-          <section key={group.id} className="section" id={group.id}>
-            <div className="section-head">
-              <p className="eyebrow">{group.eyebrow}</p>
-              <h2>{group.heading}</h2>
-            </div>
-            <p className="group-blurb">{group.blurb}</p>
-            <div className="card-grid card-grid-directory">
-              {group.links.map((item) => (
-                <article key={item.title} className="link-card">
-                  <p className="card-label">{item.label}</p>
-                  <h3>{item.title}</h3>
-                  <p>{item.detail}</p>
-                  <a href={item.href} target="_blank" rel="noopener noreferrer">
-                    {getCtaText(item)}
-                  </a>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))}
+        {groupedLinks.map((group) => {
+          const links =
+            group.id === 'featured'
+              ? group.links.filter((item) => item.title !== 'Om Shanti Directory')
+              : group.links;
+
+          return (
+            <section key={group.id} className="section" id={group.id}>
+              <div className="section-head">
+                <p className="eyebrow">{group.eyebrow}</p>
+                <h2>{group.heading}</h2>
+              </div>
+              <p className="group-blurb">{group.blurb}</p>
+              <div className="card-grid card-grid-directory">
+                {links.map((item) => (
+                  <article key={item.title} className="link-card">
+                    <p className="card-label">{item.label}</p>
+                    <h3>{item.title}</h3>
+                    <p>{item.detail}</p>
+                    <a href={item.href} target="_blank" rel="noopener noreferrer">
+                      {getCtaText(item)}
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </section>
+          );
+        })}
 
         <footer className="footer">
           <p>Tech and Tonic</p>
