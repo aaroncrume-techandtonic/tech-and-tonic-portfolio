@@ -48,7 +48,28 @@ without also adding the entry back to `vite.config.ts` (and, for the policy page
   arrays/objects (e.g. `LinkCard`, `LinkGroup`, `quickLinks`, `groupedLinks`). Keep the TypeScript
   types intact — the build runs `tsc` before `vite build` and will fail on type errors.
 
-## Step 4: Preview locally
+## Step 4: Anonymity / PII check (required for `portfolio.html` or any personal content)
+
+`portfolio.html` is a personal bio/resume page and has previously contained real PII directly in
+the source: a base64-"obfuscated" personal email + phone number (trivially decodable client-side,
+not real protection), specific named former employers, and a specific tribal affiliation name.
+Those were scrubbed to: `email`/`phone` = `'Not publicly listed'`, employer names replaced with
+generic descriptors (e.g. "Regional Casino & Gaming Resort"), and the tribe name removed, keeping
+only "Enrolled Member of a Federally Recognized Tribe".
+
+Before deploying any change to `portfolio.html` (or adding new personal content anywhere on the
+site), grep for reintroduced PII:
+
+```bash
+grep -iE "@gmail|@yahoo|@outlook|[0-9]{3}[-.][0-9]{3}[-.][0-9]{4}" portfolio.html
+```
+
+and scan for real company names, real full names, or specific tribe/location names that would let
+someone identify the individual. If real contact info is genuinely needed, confirm with the user
+first rather than adding it silently — don't reintroduce a base64 "lock" as if it were real
+protection, since it isn't.
+
+## Step 5: Preview locally
 
 ```bash
 cd tech-and-tonic-portfolio
@@ -59,7 +80,7 @@ npm run dev
 Open the printed local URL and navigate to the specific path being changed (`/`, `/portfolio.html`,
 `/tracker.html`, `/policy-impact-explorer.html`) to confirm the edit looks right.
 
-## Step 5: Verify the build before deploying
+## Step 6: Verify the build before deploying
 
 ```bash
 npm run build
@@ -68,7 +89,7 @@ npm run build
 This runs `sync:vocabulary` → `tsc` → `vite build` (output to `dist/`, per `vercel.json`). Fix any
 TypeScript errors it surfaces before deploying.
 
-## Step 6: Deploy
+## Step 7: Deploy
 
 - Check the current branch first: `git branch --show-current`. Vercel deploys to production on
   push to `main`; other branches only get preview deployments.
@@ -84,3 +105,5 @@ TypeScript errors it surfaces before deploying.
   long URLs, when following the existing convention
 - [ ] No edits made to unused legacy files (`compound-portfolio.html`, `content.html`,
   `live.html`, `site.html`, `app/`) unless the user explicitly asked to revive them
+- [ ] `portfolio.html` (or any personal content) has no real email/phone, real former-employer
+  names, or specific identifying tribe/location details — see Step 4
