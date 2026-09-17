@@ -25,7 +25,6 @@ const quickLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
   { title: 'Store', href: 'https://techandtonic.store/' },
   { title: 'Tracker Infographic', href: '/tracker.html' },
   { title: 'Professional Portfolio', href: '/portfolio.html' },
-  { title: 'Policy & Community Impact Explorer', href: '/policy-impact-explorer.html' },
 ];
 
 const groupedLinks: LinkGroup[] = [
@@ -78,20 +77,6 @@ const groupedLinks: LinkGroup[] = [
         detail: 'Practice vocabulary in an interactive medicine wheel learning environment.',
         href: '/go/language',
         label: 'Language',
-      },
-    ],
-  },
-  {
-    id: 'governance',
-    eyebrow: 'Policy and Governance',
-    heading: 'Tribal enterprise policy and community impact',
-    blurb: 'Interactive briefing tools for tribal council, executive leadership, and management.',
-    links: [
-      {
-        title: 'Policy & Community Impact Explorer',
-        detail: 'Interactive dashboard modeling rural tribal enterprise alcohol policy tradeoffs across staff, operations, and community.',
-        href: '/policy-impact-explorer.html',
-        label: 'Policy Dashboard',
       },
     ],
   },

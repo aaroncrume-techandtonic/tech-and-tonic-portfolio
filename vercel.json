@@ -14,6 +14,16 @@
   ],
   "redirects": [
     {
+      "source": "/policy-impact-explorer.html",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/policy-impact-explorer",
+      "destination": "/",
+      "permanent": false
+    },
+    {
       "source": "/go/omnicosmos",
       "destination": "https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/",
       "permanent": false
