@@ -344,7 +344,7 @@
                     </div>
                 </div>
                 <p class="mt-8 text-slate-400 text-sm italic">
-                    U.S. Citizen | Enrolled Member of a Federally Recognized Tribe (Klamath Tribes)
+                    U.S. Citizen | Enrolled Member of a Federally Recognized Tribe
                 </p>
             </div>
         </section>
@@ -374,13 +374,13 @@
         // --- Access code logic ---
         let pendingTarget = null;
 
-        // Contact details are not stored as plaintext in markup; decoded only after unlock.
+        // No personal contact details are published on this page.
         const CONTACT = {
-            email: 'YWFyb25jcnVtZUBnbWFpbC5jb20=',
-            phone: 'KDcwNykgMjE4LTE0MjE='
+            email: 'Not publicly listed',
+            phone: 'Not publicly listed'
         };
         function decodeContact(key) {
-            return atob(CONTACT[key]);
+            return CONTACT[key];
         }
 
         function requireCode(target, e) {
@@ -501,7 +501,7 @@
             },
             {
                 title: "Senior Operations Lead & Compliance Captain",
-                company: "Lucky 7 Casino",
+                company: "Regional Casino & Gaming Resort",
                 period: "2019 – 2025",
                 tags: ["ops", "tech"],
                 description: "Managed federal Title 31 (AML) workflows and served as the technical first responder for POS/Network issues.",
@@ -512,7 +512,7 @@
             },
             {
                 title: "Senior Service Manager & System Admin",
-                company: "The Harbor View Grotto",
+                company: "Coastal Fine Dining Restaurant",
                 period: "2011 – 2019",
                 tags: ["ops", "tech"],
                 description: "Redesigned POS layout as 'Super User' to reduce table turn times. Managed key vendor relations.",
@@ -523,7 +523,7 @@
             },
             {
                 title: "Director of Operations (Multi-Unit GM)",
-                company: "Melita’s Restaurant & Lodge",
+                company: "Multi-Unit Restaurant & Lodge Group",
                 period: "2009 – 2011",
                 tags: ["ops"],
                 description: "Single-point accountability for P&L, staffing, and tenants across four distinct business units.",
