@@ -5,7 +5,7 @@ type LinkCard = {
   title: string;
   detail: string;
   href: string;
-  label: string;
+  label?: string;
   cta?: string;
   tags?: string[];
 };
@@ -92,8 +92,7 @@ const groupedLinks: LinkGroup[] = [
       {
         title: 'Shop Digital Offerings',
         detail: 'Primary storefront for releases, tools, and educational products.',
-        href: 'https://techandtonic.store/',
-        label: 'Storefront',
+        href: 'https://techandtonicshop.myshopify.com/',
       },
       {
         title: 'Free Guide: Hidden Language of Trauma',
@@ -104,8 +103,7 @@ const groupedLinks: LinkGroup[] = [
       {
         title: 'Featured Product Spotlight',
         detail: 'Jump directly to a highlighted product without browsing the full catalog.',
-        href: 'https://techandtonic.store/shop/4440aedc-a40d-45f1-824c-4ca4fe42a3b6',
-        label: 'Spotlight',
+        href: 'https://asymptomaticallyravishing.myshopify.com',
       },
     ],
   },
@@ -163,14 +161,14 @@ const getCtaText = (item: LinkCard): string => {
   }
 
   const title = item.title.toLowerCase();
-  const label = item.label.toLowerCase();
+  const label = (item.label || '').toLowerCase();
 
   if (title.includes('directory')) return 'Explore Directory';
   if (title.includes('omni')) return 'Launch Experience';
   if (title.includes('library') || label.includes('library')) return 'Browse Library';
   if (title.includes('modoc')) return 'Explore Archive';
   if (title.includes('watershed')) return 'Open Story Map';
-  if (title.includes('store') || label.includes('store')) return 'Shop Now';
+  if (title.includes('shop') || title.includes('store') || label.includes('store')) return 'Shop Now';
   if (title.includes('spotlight')) return 'View Spotlight';
   if (title.includes('guide')) return 'Read Guide';
   if (title.includes('language')) return 'Practice Language';
@@ -266,7 +264,7 @@ function App() {
               <div className="card-grid card-grid-directory">
                 {links.map((item) => (
                   <article key={item.title} className="link-card">
-                    <p className="card-label">{item.label}</p>
+                    {item.label && <p className="card-label">{item.label}</p>}
                     <h3>{item.title}</h3>
                     <p>{item.detail}</p>
                     <a href={item.href} target="_blank" rel="noopener noreferrer">
