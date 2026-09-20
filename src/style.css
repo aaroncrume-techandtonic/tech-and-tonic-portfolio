@@ -238,6 +238,29 @@ a {
   line-height: 1.55;
 }
 
+.spotlight-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 1.1rem 0 0;
+  padding: 0;
+}
+
+.spotlight-tags li {
+  font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  background: var(--surface-2);
+}
+
 .spotlight-cta {
   display: inline-block;
   margin-top: 1.3rem;
@@ -253,6 +276,13 @@ a {
 .spotlight-cta:hover {
   background: var(--yellow);
   transform: translateY(-2px);
+}
+
+.spotlight-microcopy {
+  margin-top: 0.7rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
 }
 
 /* Jump nav */

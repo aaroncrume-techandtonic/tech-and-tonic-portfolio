@@ -7,6 +7,7 @@ type LinkCard = {
   href: string;
   label: string;
   cta?: string;
+  tags?: string[];
 };
 
 type LinkGroup = {
@@ -36,9 +37,11 @@ const groupedLinks: LinkGroup[] = [
     links: [
       {
         title: 'Om Shanti Directory',
-        detail: 'Featured learning and wellness directory with curated pathways and guided exploration.',
+        detail:
+          'A sacred digital sanctuary of 100 self-led knowledge infusions, bridging ancient mystical wisdom with modern psychology and somatic practice. Every entry pairs an origin story with a guided script and a one-minute daily practice to calm the nervous system and return to center.',
         href: 'https://omshantidirectory.vercel.app/',
-        label: 'Top Pick',
+        label: 'Top Pick · Return to the Center',
+        tags: ['100 Knowledge Infusions', 'Ancient Mysticism × Modern Psychology', 'Guided Daily Practice'],
       },
       {
         title: 'OmniCosmos V3.0',
@@ -219,6 +222,13 @@ function App() {
               <p className="spotlight-eyebrow">{omShantiFeature.label}</p>
               <h2 id="spotlight-heading">{omShantiFeature.title}</h2>
               <p className="spotlight-detail">{omShantiFeature.detail}</p>
+              {omShantiFeature.tags && (
+                <ul className="spotlight-tags">
+                  {omShantiFeature.tags.map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+              )}
               <a
                 className="spotlight-cta"
                 href={omShantiFeature.href}
@@ -227,6 +237,7 @@ function App() {
               >
                 Enter the Directory &rarr;
               </a>
+              <p className="spotlight-microcopy">Free to begin &middot; Self-led &middot; Always available</p>
             </div>
           </section>
         )}
