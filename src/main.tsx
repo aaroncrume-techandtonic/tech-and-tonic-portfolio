@@ -18,6 +18,28 @@ type LinkGroup = {
   links: LinkCard[];
 };
 
+type ShopifyStore = {
+  title: string;
+  detail: string;
+  href: string;
+  logoSrc?: string;
+};
+
+const shopifyStores: ShopifyStore[] = [
+  {
+    title: 'Tech & Tonic Store',
+    detail: 'Primary storefront for releases, tools, and educational products.',
+    href: 'https://techandtonicshop.myshopify.com/',
+    logoSrc: '/logos/tech-and-tonic-shop.png',
+  },
+  {
+    title: 'Asymptomaticly Ravishing',
+    detail: 'Apothecary, fashion, and beauty — self-tanning rituals and curated glow essentials.',
+    href: 'https://asymptomaticlyravishing.myshopify.com/',
+    logoSrc: '/logos/asymptomaticly-ravishing.png',
+  },
+];
+
 const quickLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
   { title: 'Faraday Protection for your Electronics', href: 'https://amzn.to/4oLVS6W' },
   { title: 'Om Shanti Directory', href: 'https://omshantidirectory.vercel.app/' },
@@ -90,20 +112,10 @@ const groupedLinks: LinkGroup[] = [
     blurb: 'Browse paid offerings and free materials without leaving the same section.',
     links: [
       {
-        title: 'Shop Digital Offerings',
-        detail: 'Primary storefront for releases, tools, and educational products.',
-        href: 'https://techandtonicshop.myshopify.com/',
-      },
-      {
         title: 'Free Guide: Hidden Language of Trauma',
         detail: 'Open the free guide and companion materials for a focused starting point.',
         href: 'https://techandtonic.store/shop/583c5bec-b36c-49f4-bc1d-e06eeaf6ce9f?pageViewSource=lib_view',
         label: 'Free Guide',
-      },
-      {
-        title: 'Featured Product Spotlight',
-        detail: 'Jump directly to a highlighted product without browsing the full catalog.',
-        href: 'https://asymptomaticallyravishing.myshopify.com',
       },
     ],
   },
@@ -285,6 +297,29 @@ function App() {
                 <h2>{group.heading}</h2>
               </div>
               <p className="group-blurb">{group.blurb}</p>
+              {group.id === 'commerce' && (
+                <div className="shop-grid">
+                  {shopifyStores.map((store) => (
+                    <a
+                      key={store.title}
+                      className="shop-card"
+                      href={store.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <p className="card-label">Shopify Store</p>
+                      {store.logoSrc ? (
+                        <img className="shop-card-logo" src={store.logoSrc} alt={`${store.title} logo`} />
+                      ) : (
+                        <span className="shop-card-wordmark">{store.title}</span>
+                      )}
+                      <h3>{store.title}</h3>
+                      <p>{store.detail}</p>
+                      <span className="shop-card-cta">Shop Now</span>
+                    </a>
+                  ))}
+                </div>
+              )}
               <div className="card-grid card-grid-directory">
                 {links.map((item) => (
                   <article key={item.title} className="link-card">
