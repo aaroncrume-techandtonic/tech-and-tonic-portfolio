@@ -160,6 +160,14 @@ a {
   background: var(--wheel-gradient);
 }
 
+.kelvin-spotlight::before {
+  background: linear-gradient(90deg, #0f4c75 0%, #1c6ea8 50%, #3282b8 100%);
+}
+
+.kelvin-spotlight .spotlight-eyebrow {
+  color: #3282b8;
+}
+
 .spotlight-motif {
   display: flex;
   justify-content: center;

@@ -185,6 +185,14 @@ const omShantiFeature = groupedLinks
   .find((group) => group.id === 'featured')
   ?.links.find((item) => item.title === 'Om Shanti Directory');
 
+const kelvinWaveFeature: LinkCard = {
+  title: 'Pacific Kelvin Wave 2026',
+  detail:
+    'An interactive simulation of the planetary Kelvin wave moving across the Pacific in 2026 — explore the ocean-atmosphere dynamics behind the event.',
+  href: 'https://github.com/aaroncrume-techandtonic/pacific-kelvin-wave-2026',
+  label: 'New · Infographic',
+};
+
 function App() {
   return (
     <>
@@ -205,6 +213,22 @@ function App() {
           <p className="eyebrow">Tech and Tonic</p>
           <h1>One directory to begin every journey.</h1>
         </header>
+
+        <section className="spotlight kelvin-spotlight" aria-labelledby="kelvin-spotlight-heading">
+          <div className="spotlight-content">
+            <p className="spotlight-eyebrow">{kelvinWaveFeature.label}</p>
+            <h2 id="kelvin-spotlight-heading">{kelvinWaveFeature.title}</h2>
+            <p className="spotlight-detail">{kelvinWaveFeature.detail}</p>
+            <a
+              className="spotlight-cta"
+              href={kelvinWaveFeature.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Kelvin Wave Infographic &rarr;
+            </a>
+          </div>
+        </section>
 
         {omShantiFeature && (
           <section className="spotlight" aria-labelledby="spotlight-heading">
