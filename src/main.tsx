@@ -25,11 +25,8 @@ type ShopifyStore = {
   logoSrc?: string;
 };
 
-// Direct destinations for the showcase apps. The same-origin /go/* redirects
-// defined in vercel.json are not resolving in production, so link straight
-// to the hosted apps until that routing issue is fixed.
 const goLinks = {
-  omnicosmos: 'https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/',
+  omnicosmos: 'https://cosmos.techandtonic.tech/',
   library: 'https://aaroncrume-techandtonic.github.io/indigenous-pages/',
   modoc: 'https://aaroncrume-techandtonic.github.io/Modoc-War/',
   watershed: 'https://aaroncrume-techandtonic.github.io/klamath-watershed/',
