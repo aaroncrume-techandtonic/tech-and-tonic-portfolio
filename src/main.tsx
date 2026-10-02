@@ -25,6 +25,18 @@ type ShopifyStore = {
   logoSrc?: string;
 };
 
+// Direct destinations for the showcase apps. The same-origin /go/* redirects
+// defined in vercel.json are not resolving in production, so link straight
+// to the hosted apps until that routing issue is fixed.
+const goLinks = {
+  omnicosmos: 'https://aaroncrume-techandtonic.github.io/OmniCosmosV2.1/',
+  library: 'https://aaroncrume-techandtonic.github.io/indigenous-pages/',
+  modoc: 'https://aaroncrume-techandtonic.github.io/Modoc-War/',
+  watershed: 'https://aaroncrume-techandtonic.github.io/klamath-watershed/',
+  language: 'https://aaroncrume-techandtonic.github.io/klamath-app-medicine-wheel/',
+  oracle: 'https://aaroncrume-techandtonic.github.io/OracleNeumero/',
+} as const;
+
 const shopifyStores: ShopifyStore[] = [
   {
     title: 'Tech & Tonic Store',
@@ -43,8 +55,8 @@ const shopifyStores: ShopifyStore[] = [
 const quickLinks: Array<Pick<LinkCard, 'title' | 'href'>> = [
   { title: 'Faraday Protection for your Electronics', href: 'https://amzn.to/4oLVS6W' },
   { title: 'Om Shanti Directory', href: 'https://omshantidirectory.vercel.app/' },
-  { title: 'Featured App', href: '/go/omnicosmos' },
-  { title: 'Learning Library', href: '/go/library' },
+  { title: 'Featured App', href: goLinks.omnicosmos },
+  { title: 'Learning Library', href: goLinks.library },
   { title: 'Store', href: 'https://techandtonic.store/' },
   { title: 'Tracker Infographic', href: '/tracker.html' },
   { title: 'Professional Portfolio', href: '/portfolio.html' },
@@ -68,7 +80,7 @@ const groupedLinks: LinkGroup[] = [
       {
         title: 'OmniCosmos V3.0',
         detail: 'Interactive cosmic experience for reflective prompts and personalized exploration.',
-        href: '/go/omnicosmos',
+        href: goLinks.omnicosmos,
         label: 'Showcase App',
       },
     ],
@@ -82,25 +94,25 @@ const groupedLinks: LinkGroup[] = [
       {
         title: 'Indigenous Learning Library',
         detail: 'Guided reading and resources organized with cultural context and clear progression.',
-        href: '/go/library',
+        href: goLinks.library,
         label: 'Library',
       },
       {
         title: 'Modoc History Archive',
         detail: 'Historical archive connecting timelines, places, and primary source context.',
-        href: '/go/modoc',
+        href: goLinks.modoc,
         label: 'History',
       },
       {
         title: 'Klamath Watershed Story Map',
         detail: 'Interactive map connecting ecosystems, relationships, and regional narratives.',
-        href: '/go/watershed',
+        href: goLinks.watershed,
         label: 'Story Map',
       },
       {
         title: 'Klamath Language App',
         detail: 'Practice vocabulary in an interactive medicine wheel learning environment.',
-        href: '/go/language',
+        href: goLinks.language,
         label: 'Language',
       },
     ],
@@ -140,7 +152,7 @@ const groupedLinks: LinkGroup[] = [
       {
         title: 'Oracle of the Wheel',
         detail: 'Numerology-based companion path for symbolic reflection.',
-        href: '/go/oracle',
+        href: goLinks.oracle,
         label: 'Companion Tool',
       },
       {
